@@ -364,7 +364,7 @@ className="hover:text-orange-500"
                 className="flex items-center gap-2 hover:text-orange-500"
               >
                 <img
-                  src="/placeholder.svg?height=20&width=20"
+                  src={'https://script.viserlab.com/ratelab/assets/images/language/664c6885ecc541716283525.png'}
                   alt="English"
                   className="h-5 w-5 rounded-sm"
                 />
@@ -375,7 +375,7 @@ className="hover:text-orange-500"
                 <div className="absolute right-0 mt-2 w-40 rounded-md bg-white py-1 shadow-lg">
                   <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
                     <img
-                      src="/placeholder.svg?height=20&width=20"
+                      src={'https://script.viserlab.com/ratelab/assets/images/language/664c6869b970c1716283497.png'}
                       alt="Hindi"
                       className="h-5 w-5 rounded-sm"
                     />
@@ -383,7 +383,7 @@ className="hover:text-orange-500"
                   </button>
                   <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
                     <img
-                      src="/placeholder.svg?height=20&width=20"
+                      src={'https://script.viserlab.com/ratelab/assets/images/language/664c684f5b7341716283471.png'}
                       alt="Bangla"
                       className="h-5 w-5 rounded-sm"
                     />
@@ -460,13 +460,13 @@ className="hover:text-orange-500"
             </div>
             <div className="px-4 pb-6">
               <div className="flex items-center justify-between py-4">
-                <div className="relative">
+                <div className="relative text-white">
                   <button
                     onClick={toggleLanguage}
-                    className="flex items-center gap-2 text-lg"
+                    className="flex items-center gap-2  text-lg"
                   >
                     <img
-                      src="/placeholder.svg?height=20&width=20"
+                      src={'https://script.viserlab.com/ratelab/assets/images/language/664c6885ecc541716283525.png'}
                       alt="English"
                       className="h-5 w-5 rounded-sm"
                     />
@@ -485,8 +485,8 @@ className="hover:text-orange-500"
                       </button>
                       <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-sm hover:bg-[#3a3b5a]">
                         <img
-                          src="/placeholder.svg?height=20&width=20"
-                          alt="Bangla"
+                      src={'https://script.viserlab.com/ratelab/assets/images/language/664c684f5b7341716283471.png'}
+                      alt="Bangla"
                           className="h-5 w-5 rounded-sm"
                         />
                         Bangla
