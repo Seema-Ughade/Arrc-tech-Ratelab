@@ -15,23 +15,23 @@ const Footer = () => {
     {
       title: 'Quick Menu',
       links: [
-        { text: 'Review', href: '#' },
-        { text: 'Support', href: '#' },
+        { text: 'Review', href: '/Review' },
+        { text: 'Support', href: '/contact' },
       ],
     },
     {
       title: 'Important Link',
       links: [
-        { text: 'Terms of Service', href: '#' },
-        { text: 'Privacy Policy', href: '#' },
+        { text: 'Terms of Service', href: '/terms-of-service' },
+        { text: 'Privacy Policy', href: '/PrivacyPolicy' },
       ],
     },
     {
       title: 'Site Links',
       links: [
-        { text: 'Home', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Contact', href: '#' },
+        { text: 'Home', href: '/' },
+        { text: 'Blog', href: '/Blog' },
+        { text: 'Contact', href: '/contact' },
       ],
     },
   ];

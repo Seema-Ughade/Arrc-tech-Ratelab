@@ -6,9 +6,8 @@ const StarRating = ({ rating }) => {
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}
-          className={`w-5 h-5 ${
-            star <= rating ? 'text-orange-400' : 'text-gray-300'
-          }`}
+          className={`w-5 h-5 ${star <= rating ? 'text-orange-400' : 'text-gray-300'
+            }`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -124,7 +123,7 @@ const RecentReviews = () => {
             <div className="w-16 h-0.5 bg-orange-400"></div>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {reviews.map((review, index) => (
             <ReviewCard key={index} review={review} />

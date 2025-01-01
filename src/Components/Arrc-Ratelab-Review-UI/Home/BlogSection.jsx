@@ -5,8 +5,8 @@ const BlogCard = ({ post }) => {
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="relative">
-        <img 
-          src={post.image} 
+        <img
+          src={post.image}
           alt={post.title}
           className="w-full h-64 object-cover"
         />
@@ -21,11 +21,11 @@ const BlogCard = ({ post }) => {
         <p className="text-gray-600 mb-4 line-clamp-3">
           {post.excerpt}
         </p>
-        <a 
-          href={post.link} 
+        <a
+          href={post.link}
           className="inline-flex items-center text-orange-400 hover:text-orange-500 transition-colors"
         >
-          Read More 
+          Read More
           <ArrowRight className="ml-2 w-4 h-4" />
         </a>
       </div>

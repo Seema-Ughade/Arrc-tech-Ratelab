@@ -21,7 +21,7 @@ const ReviewsLanding = () => {
     <section className="relative min-h-screen bg-gradient-to-br from-orange-50 to-white overflow-hidden">
       {/* Background decoration */}
       <div className="absolute bottom-0 left-0 w-full h-1/2 bg-[url('/wave-pattern.svg')] opacity-5" />
-      
+
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
@@ -49,7 +49,7 @@ const ReviewsLanding = () => {
                   <div className="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-6">
                     <feature.icon className="w-8 h-8 text-gray-700" />
                   </div>
-                  
+
                   {/* Content */}
                   <h3 className="text-2xl md:text-3xl font-bold text-navy-900 mb-4">
                     {feature.title}
@@ -57,7 +57,7 @@ const ReviewsLanding = () => {
                   <p className="text-gray-600 mb-6">
                     {feature.description}
                   </p>
-                  
+
                   {/* Button */}
                   <button className="px-6 py-3 bg-orange-400 text-white rounded-lg hover:bg-orange-500 transition-colors">
                     {feature.buttonText}
