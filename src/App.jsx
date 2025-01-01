@@ -7,6 +7,7 @@ import BlogSection from './Components/Arrc-Ratelab-Review-UI/Home/BlogSection';
 import Navbar from './Components/Arrc-Ratelab-Review-UI/Navbar/Navbar';
 import Companies from './Components/Arrc-Ratelab-Review-UI/Companies/Companies';
 import RecentReviews from './Components/Arrc-Ratelab-Review-UI/Home/RecentReviews';
+import BlogDetails from './Components/Arrc-Ratelab-Review-UI/Home/BlogDetails';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/Blog" element={<BlogSection />} />
         <Route path="/Companies" element={<Companies />} />
         <Route path="/Review" element={<RecentReviews  />} />
+        <Route path="/BlogDetails" element={<BlogDetails  />} />
       </Routes>
       <Footer />
     </Router> 

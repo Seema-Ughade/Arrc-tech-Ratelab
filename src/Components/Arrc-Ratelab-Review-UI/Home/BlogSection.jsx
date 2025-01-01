@@ -40,21 +40,21 @@ const BlogSection = () => {
       date: "2022-Oct-23",
       title: "Maecenas nisi libero, gravida eget pulvinar quis, faucibus in ipsum....",
       excerpt: "It is a long established fact that a reader will be distracted by the readable content of...",
-      link: "#"
+      link: "/BlogDetails"
     },
     {
       image: "https://script.viserlab.com/ratelab/assets/images/frontend/blog/thumb_6354d342a0e011666503490.jpeg",
       date: "2022-Oct-23",
       title: "Maecenas nisi libero, gravida eget pulvinar quis, faucibus in ipsum....",
       excerpt: "It is a long established fact that a reader will be distracted by the readable content of...",
-      link: "#"
+      link: "/BlogDetails"
     },
     {
       image: "https://script.viserlab.com/ratelab/assets/images/frontend/blog/thumb_6354d3223fe191666503458.jpg",
       date: "2022-Oct-23",
       title: "Musk says Starlink active in Ukraine as Russian invasion disrupts internet",
       excerpt: "It is a long established fact that a reader will be distracted by the readable content of...",
-      link: "#"
+      link: "/BlogDetails"
     }
   ];
 
@@ -63,7 +63,7 @@ const BlogSection = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="text-orange-400 font-medium mb-2 block">
+          <span className="text-orange-400 text-4xl font-medium mb-2 block">
             Blog Post
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-navy-900">

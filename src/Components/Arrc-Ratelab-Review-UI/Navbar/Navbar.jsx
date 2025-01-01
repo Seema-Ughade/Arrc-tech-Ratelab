@@ -512,36 +512,36 @@ className="hover:text-orange-500"
                 </Button>
               </div>
               <div className="space-y-0 divide-y divide-gray-800">
-                <a
-                  href="/"
+                <Link
+                  to ="/"
                   className="block py-4 text-lg text-orange-500 hover:text-orange-400"
                 >
                   Home
-                </a>
-                <a
-                  href="/companies"
+                </Link>
+                <Link
+                  to="/Companies"
                   className="block py-4 text-lg text-orange-500 hover:text-orange-500"
                 >
                   Companies
-                </a>
-                <a
-                  href="/blog"
+                </Link>
+                <Link
+                  to ="/Blog"
                   className="block py-4 text-lg text-orange-500 hover:text-orange-500"
                 >
                   Blog
-                </a>
-                <a
-                  href="/review"
+                </Link>
+                <Link
+                  to ="/Review"
                   className="block py-4 text-lg text-orange-500 hover:text-orange-500"
                 >
                   Review
-                </a>
-                <a
-                  href="/contact"
+                </Link>
+                <Link
+                  to ="/contact"
                   className="block py-4 text-lg text-orange-500 hover:text-orange-500"
                 >
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
           </div>
