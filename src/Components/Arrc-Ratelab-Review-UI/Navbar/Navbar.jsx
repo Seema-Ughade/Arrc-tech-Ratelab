@@ -329,7 +329,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-10 lg:flex">
           <Link
-                      to="/" className="text-orange-500 hover:text-orange-400">
+                      to="/" className=" hover:text-orange-400">
               Home
               </Link>
             <Link

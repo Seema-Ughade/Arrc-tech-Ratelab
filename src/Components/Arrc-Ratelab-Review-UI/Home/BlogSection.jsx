@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const BlogCard = ({ post }) => {
   return (
@@ -21,13 +22,13 @@ const BlogCard = ({ post }) => {
         <p className="text-gray-600 mb-4 line-clamp-3">
           {post.excerpt}
         </p>
-        <a
-          href={post.link}
+        <Link
+          to={post.link}
           className="inline-flex items-center text-orange-400 hover:text-orange-500 transition-colors"
         >
           Read More
           <ArrowRight className="ml-2 w-4 h-4" />
-        </a>
+        </Link>
       </div>
     </div>
   );

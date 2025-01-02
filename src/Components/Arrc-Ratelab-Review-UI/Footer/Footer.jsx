@@ -1,8 +1,16 @@
 import React from 'react';
 import { Facebook, Twitter, Instagram, PinIcon as Pinterest, Youtube, ArrowUp } from 'lucide-react';
 import mainlogo from '../../../assets/mainlogo.png';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleLinkClick = (to) => {
+    navigate(to);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const socialLinks = [
     { icon: Facebook, href: '#', label: 'Facebook' },
     { icon: Twitter, href: '#', label: 'Twitter' },
@@ -15,23 +23,23 @@ const Footer = () => {
     {
       title: 'Quick Menu',
       links: [
-        { text: 'Review', href: '/Review' },
-        { text: 'Support', href: '/contact' },
+        { text: 'Review', to: '/Review' },
+        { text: 'Support', to: '/contact' },
       ],
     },
     {
       title: 'Important Link',
       links: [
-        { text: 'Terms of Service', href: '/terms-of-service' },
-        { text: 'Privacy Policy', href: '/PrivacyPolicy' },
+        { text: 'Terms of Service', to: '/terms-of-service' },
+        { text: 'Privacy Policy', to: '/PrivacyPolicy' },
       ],
     },
     {
       title: 'Site Links',
       links: [
-        { text: 'Home', href: '/' },
-        { text: 'Blog', href: '/Blog' },
-        { text: 'Contact', href: '/contact' },
+        { text: 'Home', to: '/' },
+        { text: 'Blog', to: '/Blog' },
+        { text: 'Contact', to: '/contact' },
       ],
     },
   ];
@@ -69,12 +77,12 @@ const Footer = () => {
               <ul className="space-y-3">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a 
-                      href={link.href}
+                    <button
+                      onClick={() => handleLinkClick(link.to)}
                       className="text-gray-300 hover:text-orange-400 transition-colors duration-200"
                     >
                       {link.text}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -87,7 +95,7 @@ const Footer = () => {
           <p className="text-gray-400 mb-4 md:mb-0">
             Copyright © 2025 <span className="text-orange-400">Ratelab</span>. All Right Reserved
           </p>
-          
+
           {/* Social Links */}
           <div className="flex space-x-4">
             {socialLinks.map((social, index) => {
@@ -120,4 +128,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

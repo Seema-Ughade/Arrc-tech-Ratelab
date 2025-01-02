@@ -6,6 +6,7 @@ import WhyRatelab from './Home/WhyRatelab'
 import RecentReviews from './Home/RecentReviews'
 import BlogSection from './Home/BlogSection'
 import ReviewsLanding from './Home/ReviewsLanding'
+import TestimonialSection from './Home/TestimonialSection'
 const Layout = () => {
   return (
     <div>
@@ -14,6 +15,7 @@ const Layout = () => {
       <CategorySection />
       <WhyRatelab />
       <RecentReviews />
+      <TestimonialSection />
       <ReviewsLanding />
       <BlogSection />
     </div>
