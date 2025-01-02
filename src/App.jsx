@@ -11,11 +11,16 @@ import BlogDetails from './Components/Arrc-Ratelab-Review-UI/Home/BlogDetails';
 import TermsOfService from './Components/Arrc-Ratelab-Review-UI/Footer/TermsOfService';
 import PrivacyPolicy from './Components/Arrc-Ratelab-Review-UI/Footer/PrivacyPolicy';
 
+//admin
+import SignupForm from './Components/Admin/SignupForm';
+import Register from './Components/Admin/Register';
+
 const App = () => {
   return (
     <Router>
       <Navbar />
       <Routes>
+        {/* ui routes */}
         <Route path="/" element={<Layout />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/Blog" element={<BlogSection />} />
@@ -25,7 +30,13 @@ const App = () => {
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
 
+        {/* //admin routes*/}
+
+        <Route path="/sign-up" element={<SignupForm />} />
+        <Route path="/Register" element={<Register />} />
+
       </Routes>
+      
       <Footer />
     </Router>
   );
