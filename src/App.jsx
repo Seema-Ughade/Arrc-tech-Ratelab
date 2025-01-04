@@ -12,8 +12,10 @@ import TermsOfService from './Components/Arrc-Ratelab-Review-UI/Footer/TermsOfSe
 import PrivacyPolicy from './Components/Arrc-Ratelab-Review-UI/Footer/PrivacyPolicy';
 
 //admin
-import SignupForm from './Components/Admin/SignupForm';
-import Register from './Components/Admin/Register';
+import AdminLayout from './Components/Admin/AdminLayout';
+import AdminLoginForm from './Components/Admin/AdminLogin/AdminLoginForm';
+import UserRegister from './Components/Admin/UserLogin/UserRegister';
+import UserLogin from './Components/Admin/UserLogin/UserLogin';
 
 const App = () => {
   return (
@@ -32,12 +34,17 @@ const App = () => {
 
         {/* //admin routes*/}
 
-        <Route path="/sign-up" element={<SignupForm />} />
-        <Route path="/Register" element={<Register />} />
+        <Route path="/user/login" element={<UserLogin />} />
+        <Route path="/user/Register" element={<UserRegister />} />
 
+        <Route path="/login" element={<AdminLoginForm />} />
+
+
+        <Route path="/Admin/*" element={<AdminLayout />} />
       </Routes>
       
-      <Footer />
+      {/* Render Footer only for non-admin routes */}
+      {!window.location.pathname.startsWith('/Admin') && <Footer />}
     </Router>
   );
 }

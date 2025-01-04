@@ -1,198 +1,191 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Home, Users, Building2, MessageSquare, LayoutGrid, Settings, FileText, ChevronDown, ChevronUp, Ticket, PieChart, Plus, X } from 'lucide-react'
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import CategoryIcon from '@mui/icons-material/Category';
+import BusinessIcon from '@mui/icons-material/Business';
+import StarIcon from '@mui/icons-material/Star';
+import AdUnitsIcon from '@mui/icons-material/AdUnits';
+import PeopleIcon from '@mui/icons-material/People';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import SettingsIcon from '@mui/icons-material/Settings';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import ReportIcon from '@mui/icons-material/Report';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import CircleIcon from '@mui/icons-material/Circle';
 
-const MenuItem = ({ icon: Icon, label, count, isActive, onClick, children, isOpen }) => {
-  const hasChildren = children && children.length > 0
-  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false)
+export function Sidebar({ isOpen, collapsed }) {
+  const [expandedItems, setExpandedItems] = useState({});
+  const location = useLocation();
 
-  const toggleSubmenu = (e) => {
-    e.preventDefault()
-    setIsSubmenuOpen(!isSubmenuOpen)
-  }
+  const toggleExpand = (key) => {
+    setExpandedItems(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
 
-  return (
-    <div className="relative">
-      <Link
-        to="#"
-        className={`flex items-center px-4 py-3 text-sm transition-colors ${
-          isActive
-            ? 'bg-indigo-600 text-white'
-            : 'text-gray-200 hover:bg-[#1a1b3a] hover:text-white'
-        }`}
-        onClick={hasChildren ? toggleSubmenu : onClick}
-      >
-        <Icon className="h-5 w-5 mr-3" />
-        <span className="flex-1">{label}</span>
-        {count && (
-          <span className="ml-2 rounded-md bg-[#00B8D9] px-2 py-0.5 text-xs">
-            {count}
-          </span>
-        )}
-        {hasChildren && (
-          <span className="ml-2">
-            {isSubmenuOpen ? (
-              <ChevronUp className="h-4 w-4" />
-            ) : (
-              <ChevronDown className="h-4 w-4" />
-            )}
-          </span>
-        )}
-      </Link>
-      {hasChildren && isSubmenuOpen && (
-        <div className="ml-4 mt-1 space-y-1">
-          {children.map((child, index) => (
-            <Link
-              key={index}
-              to={child.path}
-              className="flex items-center px-4 py-2 text-sm text-gray-200 hover:bg-[#1a1b3a] hover:text-white"
-            >
-              <span className="mr-3">•</span>
-              {child.label}
-              {child.count && (
-                <span className="ml-auto rounded-md bg-[#00B8D9] px-2 py-0.5 text-xs">
-                  {child.count}
+  const MenuItem = ({ icon: Icon, text,  path, hasSubmenu, isExpanded, onClick, submenuItems }) => {
+    const isActive = location.pathname === path;
+    
+    return (
+      <div>
+        <Link
+          to={path}
+          className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-white transition-colors hover:bg-white/10
+            ${isActive ? 'bg-[#4c35de]' : ''}`}
+          onClick={onClick}
+        >
+          <Icon className="h-5 w-5" />
+          {!collapsed && (
+            <>
+              <span className="flex-1 text-left">{text}</span>
+              {/* {badge && (
+                <span className="rounded bg-[#00d0ff] px-2 text-xs">
+                  {badge}
                 </span>
+              )} */}
+              {hasSubmenu && (
+                isExpanded ? 
+                <KeyboardArrowUpIcon className="h-4 w-4" /> : 
+                <KeyboardArrowDownIcon className="h-4 w-4" />
               )}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
+            </>
+          )}
+        </Link>
+        {isExpanded && !collapsed && submenuItems && (
+          <div className="ml-4 space-y-1 border-l border-white/20 pl-4">
+            {submenuItems.map((subItem, index) => (
+              <Link
+                key={index}
+                to={subItem.path}
+                className="flex items-center gap-2 rounded-lg px-3 py-2 text-white transition-colors hover:bg-white/10"
+              >
+                <CircleIcon className="h-2 w-2" />
+                <span>{subItem.text}</span>
+                {/* {subItem.badge && (
+                  <span className="ml-auto rounded bg-[#00d0ff] px-2 text-xs">
+                    {subItem.badge}
+                  </span>
+                )} */}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  };
 
-export default function Sidebar({ isOpen, onClose }) {
   const menuItems = [
-    {
-      icon: Home,
-      label: 'Dashboard',
-      path: '/dashboard'
-    },
-    {
-      icon: Building2,
-      label: 'Category',
-      path: '/category'
-    },
-    {
-      icon: Building2,
-      label: 'Companies',
-      children: [
-        { label: 'All Companies', path: '/companies' },
-        { label: 'Approved', path: '/companies/approved' },
-        { label: 'Pending', path: '/companies/pending', count: '134' },
-        { label: 'Rejected', path: '/companies/rejected' }
+    { icon: HomeIcon, text: "Dashboard", path: "/Admin/Dashboard" },
+    { icon: CategoryIcon, text: "Category", path: "/Admin/Category", badge: "1" },
+    { 
+      icon: BusinessIcon, 
+      text: "Companies", 
+      path: "/Admin/Companies", 
+      badge: "1",
+      hasSubmenu: true,
+      key: "companies",
+      submenuItems: [
+        { text: "All Companies", path: "/Admin/Companies/All" },
+        { text: "Approved", path: "/Admin/Companies/Approved" },
+        { text: "Pending", path: "/Admin/Companies/Pending", badge: "134" },
+        { text: "Rejected", path: "/Admin/Companies/Rejected" }
       ]
     },
-    {
-      icon: MessageSquare,
-      label: 'Review',
-      path: '/review'
-    },
-    {
-      icon: LayoutGrid,
-      label: 'Advertisement',
-      path: '/advertisement'
-    },
-    {
-      icon: Users,
-      label: 'Manage Users',
-      count: '!',
-      children: [
-        { label: 'Active Users', path: '/users/active' },
-        { label: 'Banned Users', path: '/users/banned' },
-        { label: 'Email Unverified', path: '/users/email-unverified', count: '186' },
-        { label: 'Mobile Unverified', path: '/users/mobile-unverified' },
-        { label: 'All Users', path: '/users/all' },
-        { label: 'Send Notification', path: '/users/notifications' }
+    { icon: StarIcon, text: "Review", path: "/Admin/Review" },
+    { icon: AdUnitsIcon, text: "Advertisement", path: "/Admin/Advertisement" },
+    { 
+      icon: PeopleIcon, 
+      text: "Manage Users", 
+      path: "/Admin/ManageUsers", 
+      badge: "1",
+      hasSubmenu: true,
+      key: "manageUsers",
+      submenuItems: [
+        { text: "Active Users", path: "/Admin/ManageUsers/Active" },
+        { text: "Banned Users", path: "/Admin/ManageUsers/Banned" },
+        { text: "Email Unverified", path: "/Admin/ManageUsers/EmailUnverified", badge: "186" },
+        { text: "Mobile Unverified", path: "/Admin/ManageUsers/MobileUnverified" },
+        { text: "All Users", path: "/Admin/ManageUsers/All" },
+        { text: "Send Notification", path: "/Admin/ManageUsers/SendNotification" }
       ]
     },
-    {
-      icon: Ticket,
-      label: 'Support Ticket',
-      count: '!',
-      children: [
-        { label: 'Pending Ticket', path: '/tickets/pending', count: '20' },
-        { label: 'Closed Ticket', path: '/tickets/closed' },
-        { label: 'Answered Ticket', path: '/tickets/answered' },
-        { label: 'All Ticket', path: '/tickets/all' }
+    { 
+      icon: ConfirmationNumberIcon, 
+      text: "Support Ticket", 
+      path: "/Admin/SupportTicket", 
+      badge: "1",
+      hasSubmenu: true,
+      key: "supportTicket",
+      submenuItems: [
+        { text: "Pending Ticket", path: "/Admin/SupportTicket/Pending", badge: "20" },
+        { text: "Closed Ticket", path: "/Admin/SupportTicket/Closed" },
+        { text: "Answered Ticket", path: "/Admin/SupportTicket/Answered" },
+        { text: "All Ticket", path: "/Admin/SupportTicket/All" }
       ]
     },
-    {
-      icon: PieChart,
-      label: 'Report',
-      path: '/report'
+    { 
+      icon: AssessmentIcon, 
+      text: "Report", 
+      path: "/Admin/Report",
+      hasSubmenu: true,
+      key: "report",
+      submenuItems: [
+        { text: "Login History", path: "/Admin/Report/LoginHistory" },
+        { text: "Notification History", path: "/Admin/Report/NotificationHistory" }
+      ]
     },
-    {
-      icon: Settings,
-      label: 'System Setting',
-      path: '/settings'
+    { icon: SettingsIcon, text: "System Setting", path: "/Admin/SystemSetting" },
+    { 
+      icon: AddCircleOutlineIcon, 
+      text: "Extra", 
+      path: "/Admin/Extra",
+      hasSubmenu: true,
+      key: "extra",
+      submenuItems: [
+        { text: "Application", path: "/Admin/Extra/Application" },
+        { text: "Server", path: "/Admin/Extra/Server" },
+        { text: "Cache", path: "/Admin/Extra/Cache" },
+        { text: "Update", path: "/Admin/Extra/Update" }
+      ]
     },
-    {
-      icon: FileText,
-      label: 'Extra',
-      path: '/extra'
-    }
-  ]
+    { icon: ReportIcon, text: "Report & Request", path: "/Admin/ReportRequest" }
+  ];
 
   return (
-    <>
-      {/* Mobile backdrop */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/50 lg:hidden"
-          onClick={onClose}
-        />
-      )}
+    <aside className={`fixed left-0 top-0 z-40 h-screen transform bg-[#0a0b35] pt-16 transition-all duration-300
+      ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      ${collapsed ? 'w-16' : 'w-64'}`}
+    >
+      <div className="flex h-full flex-col gap-1 overflow-y-auto px-3 py-4">
+        {menuItems.map((item, index) => (
+          <MenuItem
+            key={index}
+            icon={item.icon}
+            text={item.text}
+            // badge={item.badge}
+            path={item.path}
+            hasSubmenu={item.hasSubmenu}
+            isExpanded={expandedItems[item.key]}
+            onClick={(e) => {
+              if (item.hasSubmenu) {
+                e.preventDefault();
+                toggleExpand(item.key);
+              }
+            }}
+            submenuItems={item.submenuItems}
+          />
+        ))}
 
-      {/* Sidebar */}
-      <div
-        className={`fixed top-0 z-50 h-full w-64 transform bg-[#0D0F35] transition-transform duration-300 ease-in-out lg:static lg:translate-x-0 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
-      >
-        {/* Logo section */}
-        <div className="flex h-16 items-center justify-between px-4">
-          <Link to="/" className="flex items-center space-x-3">
-            <img
-              src="/ratelab-logo.png"
-              alt="RateLab"
-              className="h-10 w-10"
-            />
-            <div>
-              <span className="text-xl font-bold text-white">
-                Rate<span className="text-orange-500">Lab</span>
-              </span>
-            </div>
-          </Link>
-          <button
-            onClick={onClose}
-            className="lg:hidden text-white hover:text-gray-200"
-          >
-            <X className="h-6 w-6" />
-          </button>
-        </div>
-
-        {/* Navigation */}
-        <nav className="space-y-1 px-2">
-          {menuItems.map((item, index) => (
-            <MenuItem
-              key={index}
-              icon={item.icon}
-              label={item.label}
-              count={item.count}
-              path={item.path}
-              children={item.children}
-            />
-          ))}
-        </nav>
-
-        {/* Version */}
-        <div className="absolute bottom-4 left-0 right-0 text-center text-sm font-medium text-indigo-500">
-          RATELAB V3.0
-        </div>
+        {!collapsed && (
+          <div className="mt-auto pt-4 text-center text-sm font-medium text-[#4c35de]">
+            RATELAB V3.0
+          </div>
+        )}
       </div>
-    </>
-  )
+    </aside>
+  );
 }
 
