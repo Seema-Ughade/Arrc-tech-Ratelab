@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { BrowserRouter as Router, useLocation, Routes, Route } from "react-router-dom";
 import Layout from './Components/Arrc-Ratelab-Review-UI/Layout';
 import Footer from './Components/Arrc-Ratelab-Review-UI/Footer/Footer';
 import ContactUs from './Components/Arrc-Ratelab-Review-UI/Contact/ContactUs';
@@ -44,7 +45,9 @@ const App = () => {
       </Routes>
       
       {/* Render Footer only for non-admin routes */}
-      {!window.location.pathname.startsWith('/Admin') && <Footer />}
+      {!location.pathname.startsWith('/Admin') && <Footer />}
+
+      {/* {!window.location.pathname.startsWith('/Admin') && <Footer />} */}
     </Router>
   );
 }
