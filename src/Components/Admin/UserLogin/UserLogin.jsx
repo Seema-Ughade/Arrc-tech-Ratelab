@@ -205,7 +205,7 @@ export default function UserLogin() {
 
         if (response.ok) {
           localStorage.setItem('token', data.token);
-          navigate('/dashbaord');
+          navigate('/dashboard');
         } else {
           setErrors({ api: data.error || "Login failed" });
         }

@@ -18,7 +18,10 @@ import AdminLoginForm from './Components/Admin/AdminLogin/AdminLoginForm';
 import UserRegister from './Components/Admin/UserLogin/UserRegister';
 import UserLogin from './Components/Admin/UserLogin/UserLogin';
 
+import ProtectedRoute from './Components/Admin/ProtectedRoute'
+import UserLayout from './Components/Admin/UserLayout';
 const App = () => {
+  
   return (
     <Router>
       <Navbar />
@@ -41,9 +44,27 @@ const App = () => {
         <Route path="/login" element={<AdminLoginForm />} />
 
 
-        <Route path="/Admin/*" element={<AdminLayout />} />
+        {/* <Route path="/Admin/*" element={<AdminLayout />} /> */}
+        <Route
+          path="/Admin/*"
+          element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/user/*"
+          element={
+            <ProtectedRoute>
+              <UserLayout />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
-      
+
       {/* Render Footer only for non-admin routes */}
       {!location.pathname.startsWith('/Admin') && <Footer />}
 

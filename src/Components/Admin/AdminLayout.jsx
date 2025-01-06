@@ -6,6 +6,13 @@ import Dashboard from './Dashboard/Dashboard';
 import Category from './category/Categories';
 import PendingCompanies from './Companies/PendingCompanies';
 import Reviews from './Reviews/Reviews';
+import AdvertisementList from './AdvertisementList/AdvertisementList';
+import AllCompanyManagement from './Companies/AllCompanyManagement';
+import ApprovedCompanies from './Companies/ApprovedCompanies';
+import RejectedCompanies from './Companies/RejectedCompanies';
+import ActiveUsers from './Manage Users/ActiveUsers';
+import BannedUsers from './Manage Users/BannedUsers';
+import EmailUnverifiedUsers from './Manage Users/EmailUnverifiedUsers';
 // import Advertisement from './Advertisement/Advertisement';
 // import ManageUsers from './ManageUsers/ManageUsers';
 // import SupportTicket from './SupportTicket/SupportTicket';
@@ -50,16 +57,29 @@ export default function AdminLayout() {
             {/* <Route path="/" element={<Dashboard />} /> */}
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/Category" element={<Category />} />
-            {/* <Route path="/Companies/*" element={<PendingCompanies />} /> */}
+
+            <Route path="/Companies/All" element={<AllCompanyManagement />} />
+            <Route path="/Companies/Approved" element={<ApprovedCompanies />} />
             <Route path="/Companies/Pending" element={<PendingCompanies />} />
+            <Route path="/Companies/Rejected" element={<RejectedCompanies />} />
+
             <Route path="/Review" element={<Reviews />} />
-            {/* <Route path="/Advertisement" element={<Advertisement />} />
-            <Route path="/ManageUsers/*" element={<ManageUsers />} />
-            <Route path="/SupportTicket/*" element={<SupportTicket />} />
-            <Route path="/Report/*" element={<Report />} />
-            <Route path="/SystemSetting" element={<SystemSetting />} />
-            <Route path="/Extra/*" element={<Extra />} />
-            <Route path="/ReportRequest" element={<ReportRequest />} /> */}
+
+            <Route path="/Advertisement" element={<AdvertisementList />}/>
+
+             <Route path="/ManageUsers/Active" element={<ActiveUsers />} />
+             <Route path="/ManageUsers/Banned" element={<BannedUsers />} />
+             <Route path="/ManageUsers/EmailUnverified" element={<EmailUnverifiedUsers />} />
+             {/* <Route path="/ManageUsers/MobileUnverified" element={<ActiveUsers />} />
+             <Route path="/ManageUsers/All" element={<ActiveUsers />} />
+             <Route path="/ManageUsers/SendNotification" element={<ActiveUsers />} /> */}
+
+
+             {/* <Route path="/SupportTicket/*" element={<SupportTicket />} />
+             <Route path="/Report/*" element={<Report />} />
+             <Route path="/SystemSetting" element={<SystemSetting />} />
+             <Route path="/Extra/*" element={<Extra />} />
+             <Route path="/ReportRequest" element={<ReportRequest />} /> */}
           </Routes>
         </div>
       </main>

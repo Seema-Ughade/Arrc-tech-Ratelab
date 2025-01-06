@@ -324,7 +324,7 @@ export default function Navbar() {
 
   const handleClick = () => {
     // Navigate to the AdminLayout route
-    navigate('/login');
+    navigate('/user/login');
   };
 
   useEffect(() => {
