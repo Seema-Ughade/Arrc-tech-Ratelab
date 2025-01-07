@@ -19,7 +19,7 @@ const RejectedCompanies = () => {
       try {
         setLoading(true);
         // Simulating API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 10));
         setCompanies(rejectedCompaniesData);
         setFilteredCompanies(rejectedCompaniesData);
       } catch (err) {

@@ -69,7 +69,7 @@ const AllCompanyManagement = () => {
       try {
         setLoading(true);
         // Simulating API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 10));
         setCompanies(companiesData);
         setFilteredCompanies(companiesData);
       } catch (err) {
@@ -116,7 +116,7 @@ const AllCompanyManagement = () => {
   const handleModalSubmit = async (type) => {
     try {
       // Simulating API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 10));
       
       // Update company status
       const updatedCompanies = companies.map(company => {

@@ -19,7 +19,7 @@ const BannedUsers = () => {
       try {
         setLoading(true);
         // Simulating API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 10));
         setUsers(bannedUsersData);
         setFilteredUsers(bannedUsersData);
       } catch (err) {

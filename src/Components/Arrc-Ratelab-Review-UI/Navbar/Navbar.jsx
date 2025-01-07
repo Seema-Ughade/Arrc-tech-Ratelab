@@ -397,7 +397,8 @@ const Navbar = () => {
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <div className="flex items-center">
-          <Link to="/" className="flex items-center gap-3" aria-label="RateLab Home">
+          {/* <Link to="/" className="flex items-center gap-3" aria-label="RateLab Home"> */}
+          <Link to="/login" className="flex items-center gap-3" aria-label="RateLab Home">
             <div className="relative h-12 w-12 overflow-hidden rounded-full bg-white p-2">
               <img
                 src={mainlogo}
