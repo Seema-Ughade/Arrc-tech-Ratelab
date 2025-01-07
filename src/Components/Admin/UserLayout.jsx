@@ -14,7 +14,7 @@
 //       <Routes>
 //         {/* UI route */}
 //         <Route path="/" element={<UserProfile />} />
-        
+
 //         {/* User routes */}
 //         <Route path="/dashboard" element={<UserDashboard />} />
 //         <Route path="/user" element={<UserProfile />} />
@@ -42,18 +42,19 @@ import OpenTicketForm from '../UserLogin/tickets/OpenTicketForm';
 import ChangePasswordForm from '../UserLogin/Profile/ChangePasswordForm';
 import AddCompany from '../UserLogin/AddCompany/AddCompany';
 import CompanyList from '../UserLogin/AddCompany/CompanyList';
+import SupportTicket from '../UserLogin/tickets/SupportTicket';
 
 const UserLayout = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Banner Image */}
-      <div 
-        className="h-48 w-full bg-cover bg-center"
+      <div
+        className="h-80 w-full bg-cover bg-center"
         style={{
           backgroundImage: `url('https://script.viserlab.com/ratelab/assets/images/frontend/breadcrumb/6354d380899a21666503552.jpg')`
         }}
       />
-      
+
       <div className="container mx-auto px-4">
         <div className="relative -mt-24 flex flex-col lg:flex-row gap-6">
           {/* Sidebar */}
@@ -72,10 +73,11 @@ const UserLayout = () => {
                 <Route path="/" element={<ProfileSection />} />
                 <Route path="/profile" element={<ProfileSection />} />
                 <Route path="/reviews" element={<ReviewsSection />} />
-                <Route path="/ticket" element={<OpenTicketForm />} />
+                <Route path="/ticket/new" element={<OpenTicketForm />} />
+                <Route path="/ticket" element={<SupportTicket />} />
                 <Route path="/change-password" element={<ChangePasswordForm />} />
                 <Route path="/company/create" element={<AddCompany />} />
-                 <Route path="/company/all" element={<CompanyList />} />
+                <Route path="/company/all" element={<CompanyList />} />
 
               </Routes>
             </div>

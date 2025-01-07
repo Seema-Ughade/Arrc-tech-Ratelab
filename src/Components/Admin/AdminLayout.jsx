@@ -13,6 +13,21 @@ import RejectedCompanies from './Companies/RejectedCompanies';
 import ActiveUsers from './Manage Users/ActiveUsers';
 import BannedUsers from './Manage Users/BannedUsers';
 import EmailUnverifiedUsers from './Manage Users/EmailUnverifiedUsers';
+import AllUsers from './Manage Users/AllUsers';
+import MobileUnverifiedUsers from './Manage Users/MobileUnverifiedUsers';
+import NotificationForm from './Manage Users/NotificationForm';
+import TicketList from './Supports Tickets/TicketList';
+import TicketReply from './Supports Tickets/TicketReply';
+import TicketManagement from './Supports Tickets/TicketManagement';
+import ClosedTickets from './Supports Tickets/ClosedTickets';
+import AnsweredTickets from './Supports Tickets/AnsweredTickets';
+import ApplicationInfo from './Extra/ApplicationInfo';
+import ServerInfo from './Extra/ServerInfo';
+import ClearCache from './Extra/ClearCache';
+import Systemupdates from './Extra/Systemupdates';
+import NotificationHistory from './Reports/NotificationHistory';
+import UserLoginHistory from './Reports/UserLoginHistory';
+import ReportRequest from './ReportRequest';
 // import Advertisement from './Advertisement/Advertisement';
 // import ManageUsers from './ManageUsers/ManageUsers';
 // import SupportTicket from './SupportTicket/SupportTicket';
@@ -23,7 +38,7 @@ import EmailUnverifiedUsers from './Manage Users/EmailUnverifiedUsers';
 
 export default function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  
+
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const navigate = useNavigate();
 
@@ -44,12 +59,12 @@ export default function AdminLayout() {
         toggleSidebarCollapse={toggleSidebarCollapse}
       /> */}
 
-<Navbar 
-  toggleSidebar={() => setSidebarOpen(!sidebarOpen)} 
-  onLogout={handleLogout}
-  collapsed={sidebarCollapsed}  // Corrected prop name
-  toggleSidebarCollapse={toggleSidebarCollapse}
-/>
+      <Navbar
+        toggleSidebar={() => setSidebarOpen(!sidebarOpen)}
+        onLogout={handleLogout}
+        collapsed={sidebarCollapsed}  // Corrected prop name
+        toggleSidebarCollapse={toggleSidebarCollapse}
+      />
       <Sidebar isOpen={sidebarOpen} collapsed={sidebarCollapsed} />
       <main className={`pt-16 transition-all duration-300 ${sidebarCollapsed ? 'lg:pl-16' : 'lg:pl-64'}`}>
         <div className="px-4 py-6">
@@ -65,25 +80,31 @@ export default function AdminLayout() {
 
             <Route path="/Review" element={<Reviews />} />
 
-            <Route path="/Advertisement" element={<AdvertisementList />}/>
+            <Route path="/Advertisement" element={<AdvertisementList />} />
 
-             <Route path="/ManageUsers/Active" element={<ActiveUsers />} />
-             <Route path="/ManageUsers/Banned" element={<BannedUsers />} />
-             <Route path="/ManageUsers/EmailUnverified" element={<EmailUnverifiedUsers />} />
-             {/* <Route path="/ManageUsers/MobileUnverified" element={<ActiveUsers />} />
-             <Route path="/ManageUsers/All" element={<ActiveUsers />} />
-             <Route path="/ManageUsers/SendNotification" element={<ActiveUsers />} /> */}
+            <Route path="/ManageUsers/Active" element={<ActiveUsers />} />
+            <Route path="/ManageUsers/Banned" element={<BannedUsers />} />
+            <Route path="/ManageUsers/EmailUnverified" element={<EmailUnverifiedUsers />} />
+            <Route path="/ManageUsers/All" element={<AllUsers />} />
 
+            <Route path="/ManageUsers/MobileUnverified" element={<MobileUnverifiedUsers />} />
+            <Route path="/ManageUsers/SendNotification" element={<NotificationForm />} />
+            <Route path="/SupportTicket/Pending" element={<TicketManagement />} />
+            <Route path="/SupportTicket/All" element={<TicketList />} />
+            <Route path="/SupportTicket/Closed" element={<ClosedTickets />} />
+            <Route path="/SupportTicket/Answered" element={<AnsweredTickets />} />
+            <Route path="/Extra/Application" element={<ApplicationInfo />} />
+            <Route path="/Extra/Server" element={<ServerInfo />} />
+            <Route path="/Extra/Cache" element={<ClearCache />} />
+            <Route path="/Extra/Update" element={<Systemupdates />} />
 
-             {/* <Route path="/SupportTicket/*" element={<SupportTicket />} />
-             <Route path="/Report/*" element={<Report />} />
-             <Route path="/SystemSetting" element={<SystemSetting />} />
-             <Route path="/Extra/*" element={<Extra />} />
-             <Route path="/ReportRequest" element={<ReportRequest />} /> */}
+            <Route path="/Report/LoginHistory" element={<UserLoginHistory />} />
+            <Route path="/Report/NotificationHistory" element={<NotificationHistory />} />
+            <Route path="/ReportRequest" element={<ReportRequest />} />
           </Routes>
         </div>
       </main>
-      
+
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-30 bg-black/50 lg:hidden"

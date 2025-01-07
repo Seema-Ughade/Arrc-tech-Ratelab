@@ -287,6 +287,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, User } from 'lucide-react';
 import mainlogo from '../../../assets/mainlogo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -361,7 +363,7 @@ const Navbar = () => {
     { to: '/user/profile', label: 'My Profile' },
     { to: '/user/change-password', label: 'Change Password' },
     { to: 'user/ticket', label: 'My Support Tickets' },
-    { to: 'user/ticket', label: 'Open New Ticket' },
+    { to: 'user/ticket/new', label: 'Open New Ticket' },
   ];
 
   const languages = [
@@ -435,7 +437,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                 >
                   My Company
-                  <ChevronDown className="h-4 w-4" />
+                  <FontAwesomeIcon icon={faPlus} className="h-4 w-4" />
                 </button>
                 <div className="absolute left-0 mt-2 w-48 rounded-md bg-white py-1 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
                   {userMenuLinks.map((link) => (
@@ -457,8 +459,8 @@ const Navbar = () => {
                 >
                   <User className="h-4 w-4" />
                   {user.firstName}
-                  <ChevronDown className="h-4 w-4" />
-                </button>
+                  <FontAwesomeIcon icon={faPlus} className="h-4 w-4" />
+                  </button>
                 <div className="absolute right-0 mt-2 w-48 rounded-md bg-white py-1 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
                   {profileMenuLinks.map((link) => (
                     <Link
