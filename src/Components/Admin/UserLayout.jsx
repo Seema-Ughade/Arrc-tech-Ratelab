@@ -69,7 +69,7 @@ const UserLayout = () => {
 
             <div className="bg-white rounded-lg shadow-md">
               <Routes>
-                <Route path="/" element={<UserDashboard />} />
+                <Route path="/" element={<ProfileSection />} />
                 <Route path="/profile" element={<ProfileSection />} />
                 <Route path="/reviews" element={<ReviewsSection />} />
                 <Route path="/ticket" element={<OpenTicketForm />} />
