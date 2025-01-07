@@ -116,7 +116,8 @@ const Slider = () => {
         className="absolute inset-0 z-0"
         style={{
           backgroundImage:
-            'url(https://script.viserlab.com/ratelab/assets/images/frontend/banner/6353a8fcb56c71666427132.jpg)',
+            // 'url(https://script.viserlab.com/ratelab/assets/images/frontend/banner/6353a8fcb56c71666427132.jpg)',
+            'url(https://img.freepik.com/free-photo/future-visions-business-technology-concept_23-2151893412.jpg?t=st=1736241151~exp=1736244751~hmac=188233faa7ef52464254a83609d32db4307fd1677ded273cd803b83b9680a970&w=996)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.9,
@@ -128,7 +129,7 @@ const Slider = () => {
         {/* Left Side Content */}
         <div className="w-full max-w-xl text-left">
           {/* Animated Heading */}
-          <motion.h1
+          {/* <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -138,14 +139,25 @@ const Slider = () => {
             <span className="block mb-2">growth with</span>
             <span className="block mb-2">Reviews and</span>
             <span className="block">Loyalty</span>
-          </motion.h1>
+          </motion.h1> */}
 
+<motion.h1
+  initial={{ opacity: 0, y: 50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  className="mb-6 text-4xl text-orange-500 lg:leading-tight font-extrabold tracking-tight sm:text-6xl"
+>
+  <span className="block mb-2 text-white ">Accelerate <span className='text-orange-500'>brand</span> </span>
+  <span className="block mb-2  ">growth with</span>
+  <span className="block mb-2 ">Reviews and</span>
+  <span className="block ">Loyalty</span>
+</motion.h1>
           {/* Animated Subheading */}
           <motion.p
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-12 text-lg text-gray-800 sm:text-xl"
+            className="mb-12 text-lg font-extrabold text-white sm:text-xl"
           >
             Discover companies, read reviews, and share your experience with the world.
           </motion.p>

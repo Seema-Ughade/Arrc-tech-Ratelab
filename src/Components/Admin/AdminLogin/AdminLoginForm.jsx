@@ -24,7 +24,13 @@ const AdminLoginForm = () => {
       const response = await axios.post('https://arrc-tech-ratelab-backend.onrender.com/api/auth/login', formData);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
-        navigate('/Admin');
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+
+        if (response.data.user.role === 'admin') {
+          navigate('/Admin');
+        } else {
+          navigate('/user');
+        }
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');

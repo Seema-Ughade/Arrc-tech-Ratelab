@@ -21,9 +21,9 @@ import UserLogin from './Components/Admin/UserLogin/UserLogin';
 import ProtectedRoute from './Components/Admin/ProtectedRoute'
 import UserLayout from './Components/Admin/UserLayout';
 const App = () => {
-  
-  return (
-    <Router>
+  const location = useLocation();  // useLocation hook to track the current route
+
+  return (<>
       <Navbar />
       <Routes>
         {/* ui routes */}
@@ -67,10 +67,17 @@ const App = () => {
 
       {/* Render Footer only for non-admin routes */}
       {!location.pathname.startsWith('/Admin') && <Footer />}
-
-      {/* {!window.location.pathname.startsWith('/Admin') && <Footer />} */}
-    </Router>
+      </>
   );
 }
 
-export default App;
+// export default App;
+const AppWrapper = () => {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+};
+
+export default AppWrapper;

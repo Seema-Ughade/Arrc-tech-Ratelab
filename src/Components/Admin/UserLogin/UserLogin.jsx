@@ -191,30 +191,36 @@ export default function UserLogin() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (validateForm()) {
-      try {
-        const response = await fetch('https://arrc-tech-ratelab-backend.onrender.com/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
-        });
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),  // Send the form data as JSON
+            });
 
-        const data = await response.json();
+            const data = await response.json();
 
-        if (response.ok) {
-          localStorage.setItem('token', data.token);
-          navigate('/dashboard');
-        } else {
-          setErrors({ api: data.error || "Login failed" });
+            if (response.ok) {
+                const { token, user } = data;
+
+                // Store the token and user object in localStorage
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
+
+                navigate('/user');
+            } else {
+                setErrors({ api: data.error || "Login failed" });
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            setErrors({ api: 'An error occurred during login' });
         }
-      } catch (error) {
-        console.error('Login error:', error);
-        setErrors({ api: 'An error occurred during login' });
-      }
     }
-  };
+};
 
   const validateForm = () => {
     let formErrors = {};
