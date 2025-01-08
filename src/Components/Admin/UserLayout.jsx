@@ -1,35 +1,3 @@
-// import React from 'react';
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Layout from '../Arrc-Ratelab-Review-UI/Layout';
-// import Footer from '../Arrc-Ratelab-Review-UI/Footer/Footer';
-// import UserDashboard from '../../Components/UserLogin/UserDashboard';
-// import UserProfile from '../../Components/UserLogin/UserProfile';
-// import UserNavbar from '../UserLogin/UserNavbar';
-// import AddCompany from '../UserLogin/AddCompany/AddCompany';
-// import CompanyList from '../UserLogin/AddCompany/CompanyList';
-
-// const UserLayout = () => {
-//   return (<>
-//         {/* <UserNavbar /> */}
-//       <Routes>
-//         {/* UI route */}
-//         <Route path="/" element={<UserProfile />} />
-
-//         {/* User routes */}
-//         <Route path="/dashboard" element={<UserDashboard />} />
-//         <Route path="/user" element={<UserProfile />} />
-//         <Route path="/company/create" element={<AddCompany />} />
-//         <Route path="/company/all" element={<CompanyList />} />
-//       </Routes>
-//       {/* <Footer /> */}
-
-//   </>
-//   );
-// };
-
-// export default UserLayout;
-
-
 
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';

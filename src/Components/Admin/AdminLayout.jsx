@@ -28,6 +28,7 @@ import Systemupdates from './Extra/Systemupdates';
 import NotificationHistory from './Reports/NotificationHistory';
 import UserLoginHistory from './Reports/UserLoginHistory';
 import ReportRequest from './ReportRequest';
+import AllCompany from './Companies/AllCompany';
 // import Advertisement from './Advertisement/Advertisement';
 // import ManageUsers from './ManageUsers/ManageUsers';
 // import SupportTicket from './SupportTicket/SupportTicket';
@@ -77,6 +78,7 @@ export default function AdminLayout() {
             <Route path="/Companies/Approved" element={<ApprovedCompanies />} />
             <Route path="/Companies/Pending" element={<PendingCompanies />} />
             <Route path="/Companies/Rejected" element={<RejectedCompanies />} />
+            <Route path="/Companies/Allnew" element={<AllCompany />} />
 
             <Route path="/Review" element={<Reviews />} />
 
