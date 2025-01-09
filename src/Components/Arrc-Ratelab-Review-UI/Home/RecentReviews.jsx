@@ -202,7 +202,7 @@ const RecentReviews = () => {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/reviews');
+        const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/reviews');
         setReviews(response.data);
         setLoading(false);
       } catch (err) {

@@ -433,7 +433,7 @@ export default function Categories() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/categories')
+      const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/categories')
       setCategories(response.data)
       setLoading(false)
     } catch (error) {
@@ -453,7 +453,7 @@ export default function Categories() {
       return
     }
     try {
-      const response = await axios.post('http://localhost:5000/api/categories', newCategory)
+      const response = await axios.post('https://arrc-tech-ratelab-backend.onrender.com/api/categories', newCategory)
       setCategories([...categories, response.data])
       setNewCategory({ name: '', icon: '' })
       setIsAddModalOpen(false)
@@ -474,7 +474,7 @@ export default function Categories() {
       return
     }
     try {
-      const response = await axios.put(`http://localhost:5000/api/categories/${selectedCategory._id}`, editCategory)
+      const response = await axios.put(`https://arrc-tech-ratelab-backend.onrender.com/api/categories/${selectedCategory._id}`, editCategory)
       setCategories(categories.map(cat => 
         cat._id === selectedCategory._id ? response.data : cat
       ))
@@ -488,7 +488,7 @@ export default function Categories() {
   const handleToggleStatus = async (category) => {
     try {
       const newStatus = category.status === 'Enable' ? 'Disable' : 'Enable'
-      const response = await axios.patch(`http://localhost:5000/api/categories/${category._id}/toggle-status`)
+      const response = await axios.patch(`https://arrc-tech-ratelab-backend.onrender.com/api/categories/${category._id}/toggle-status`)
       setCategories(categories.map(cat =>
         cat._id === category._id ? response.data : cat
       ))
