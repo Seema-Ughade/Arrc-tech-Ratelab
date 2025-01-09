@@ -34,7 +34,7 @@
 
 //   const fetchReviews = async () => {
 //     try {
-//       const response = await axios.get('http://127.0.0.1:5000/api/reviews');
+//       const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/reviews');
 //       setReviews(response.data);
 //     } catch (error) {
 //       console.error('Error fetching reviews:', error);
@@ -65,7 +65,7 @@
 //         }));
 
 //         // Send processed data to the backend for updating
-//         const response = await axios.put('http://127.0.0.1:5000/api/reviews', processedData);
+//         const response = await axios.put('https://arrc-tech-ratelab-backend.onrender.com/api/reviews', processedData);
         
 //         setReviews(response.data);
 //         message.success('Data processed and updated successfully');
@@ -118,7 +118,7 @@
 //   const handleDelete = useCallback(async (confirmed) => {
 //     if (confirmed && selectedReview) {
 //       try {
-//         await axios.delete(`http://127.0.0.1:5000/api/reviews/${selectedReview._id}`);
+//         await axios.delete(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${selectedReview._id}`);
 //         fetchReviews();
 //         message.success('Review deleted successfully');
 //       } catch (error) {
@@ -132,7 +132,7 @@
 
 //   const handleRemoveFile = useCallback(async () => {
 //     try {
-//       await axios.delete('http://127.0.0.1:5000/api/reviews');
+//       await axios.delete('https://arrc-tech-ratelab-backend.onrender.com/api/reviews');
 //       setFileName('');
 //       setUploadedFile(null);
 //       fetchReviews();
