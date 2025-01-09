@@ -100,6 +100,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Search } from 'lucide-react'
+import slider2 from '../../../assets/slider2.jpg'
 
 const Slider = () => {
   const [searchQuery, setSearchQuery] = React.useState('')
@@ -117,7 +118,7 @@ const Slider = () => {
         style={{
           backgroundImage:
             // 'url(https://script.viserlab.com/ratelab/assets/images/frontend/banner/6353a8fcb56c71666427132.jpg)',
-            'url(https://img.freepik.com/free-photo/future-visions-business-technology-concept_23-2151893412.jpg?t=st=1736241151~exp=1736244751~hmac=188233faa7ef52464254a83609d32db4307fd1677ded273cd803b83b9680a970&w=996)',
+            `url(${slider2})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.9,
@@ -147,10 +148,10 @@ const Slider = () => {
   transition={{ duration: 0.6 }}
   className="mb-6 text-4xl text-orange-500 lg:leading-tight font-extrabold tracking-tight sm:text-6xl"
 >
-  <span className="block mb-2 text-white ">Accelerate <span className='text-orange-500'>brand</span> </span>
-  <span className="block mb-2  ">growth with</span>
-  <span className="block mb-2 ">Reviews and</span>
-  <span className="block ">Loyalty</span>
+  <span className="block mb-2 text-blue-600 ">Accelerate <span className='text-orange-500'>brand</span> </span>
+  <span className="block mb-2 text-pink-600 ">growth with</span>
+  <span className="block text-pink-600 mb-2 ">Reviews and</span>
+  <span className="block text-pink-600 ">Loyalty</span>
 </motion.h1>
           {/* Animated Subheading */}
           <motion.p
