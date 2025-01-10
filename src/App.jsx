@@ -20,6 +20,7 @@ import UserLogin from './Components/Admin/UserLogin/UserLogin';
 
 import ProtectedRoute from './Components/Admin/ProtectedRoute'
 import UserLayout from './Components/Admin/UserLayout';
+import ReviewPage from './Components/Arrc-Ratelab-Review-UI/Companies/ReviewPage';
 const App = () => {
   const location = useLocation();  // useLocation hook to track the current route
 
@@ -31,6 +32,8 @@ const App = () => {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/Blog" element={<BlogSection />} />
         <Route path="/Companies" element={<Companies />} />
+        <Route path="/company/:id" element={<ReviewPage />} />
+
         <Route path="/Review" element={<RecentReviews />} />
         <Route path="/BlogDetails" element={<BlogDetails />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />

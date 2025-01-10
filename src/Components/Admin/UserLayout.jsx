@@ -46,6 +46,7 @@ const UserLayout = () => {
                 <Route path="/change-password" element={<ChangePasswordForm />} />
                 <Route path="/company/create" element={<AddCompany />} />
                 <Route path="/company/all" element={<CompanyList />} />
+                
 
               </Routes>
             </div>

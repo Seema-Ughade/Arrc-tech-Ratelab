@@ -1,0 +1,344 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
+import { MapPinIcon, BuildingOffice2Icon, TagIcon, CalendarDaysIcon, LinkIcon } from '@heroicons/react/24/outline';
+
+const StarRating = ({ rating, onRatingChange = null }) => {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 >= 0.5;
+
+  return (
+    <div className="flex gap-1">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <svg
+          key={star}
+          className={`w-5 h-5 ${
+            star <= fullStars
+              ? 'text-[#FFB23F]'
+              : star === fullStars + 1 && hasHalfStar
+              ? 'text-[#FFB23F]'
+              : 'text-gray-300'
+          } ${onRatingChange ? 'cursor-pointer' : ''}`}
+          fill={star <= fullStars ? 'currentColor' : 'none'}
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          onClick={() => onRatingChange && onRatingChange(star)}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+          />
+          {star === fullStars + 1 && hasHalfStar && (
+            <path
+              fill="currentColor"
+              d="M12 2.24l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69L12 2.24z"
+              clipPath="inset(0 50% 0 0)"
+            />
+          )}
+        </svg>
+      ))}
+    </div>
+  );
+};
+
+const ReviewPage = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [company, setCompany] = useState(null);
+  const [reviews, setReviews] = useState([]);
+  const [newReview, setNewReview] = useState({ rating: 0, comment: '' });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    checkAuthStatus();
+    fetchCompanyAndReviews();
+  }, [id]);
+
+  const checkAuthStatus = () => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token);
+  };
+
+  const fetchCompanyAndReviews = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      
+      const [companyRes, reviewsRes] = await Promise.all([
+        axios.get(`http://127.0.0.1:5000/api/companies/${id}`),
+        axios.get(`http://127.0.0.1:5000/api/reviews/${id}`)
+      ]);
+
+      setCompany(companyRes.data);
+      setReviews(reviewsRes.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setError('Failed to load data. Please try again later.');
+      toast.error('Error loading company data');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleReviewSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!isLoggedIn) {
+      toast.error('Please login to submit a review');
+      navigate('/user/login', { state: { returnUrl: `/company/${id}` } });
+      return;
+    }
+
+    if (newReview.rating === 0) {
+      toast.error('Please select a rating');
+      return;
+    }
+
+    if (!newReview.comment.trim()) {
+      toast.error('Please write a review');
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(
+        `http://127.0.0.1:5000/api/reviews/${id}`,
+        {
+          rating: newReview.rating,
+          comment: newReview.comment
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      if (response.data) {
+        setReviews(prevReviews => [response.data, ...prevReviews]);
+        setNewReview({ rating: 0, comment: '' });
+        toast.success('Review submitted successfully!');
+      } else {
+        throw new Error('Invalid response from server');
+      }
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      if (error.response?.status === 401) {
+        toast.error('Please login again to submit your review');
+        navigate('/user/login');
+      } else {
+        toast.error('Failed to submit review. Please try again.');
+      }
+    }
+  };
+
+  const handleDeleteReview = async (reviewId) => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.delete(`http://127.0.0.1:5000/api/reviews/${reviewId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setReviews(prevReviews => prevReviews.filter(review => review._id !== reviewId));
+      toast.success('Review deleted successfully!');
+    } catch (error) {
+      console.error('Error deleting review:', error);
+      toast.error('Failed to delete review. Please try again.');
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#FFB23F]"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+          <strong className="font-bold">Error: </strong>
+          <span className="block sm:inline">{error}</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!company) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+          <strong className="font-bold">Error: </strong>
+          <span className="block sm:inline">Company not found.</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#FAF7F5]">
+      {/* Header Background */}
+      <div className="relative w-full h-80">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://script.viserlab.com/ratelab/assets/images/frontend/breadcrumb/6354d380899a21666503552.jpg')`
+          }}
+        />
+        <div className="absolute inset-0 bg-[#1a1b3a]/80" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
+        <div className="grid md:grid-cols-12 gap-8">
+          {/* Left Sidebar */}
+          <div className="md:col-span-4">
+            <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+              <div className="mb-6">
+                <div className="aspect-[4/3] bg-gray-200 rounded-lg overflow-hidden">
+                  {company.imageUrl ? (
+                    <img 
+                      src={company.imageUrl}
+                      alt={company.companyName}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400">
+                      400×300
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">About {company.companyName}</h3>
+                  <p className="text-gray-600 leading-relaxed">{company.description}</p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <BuildingOffice2Icon className="w-5 h-5" />
+                    <span>Travel Agency</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <MapPinIcon className="w-5 h-5" />
+                    <span>Dhaka</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <LinkIcon className="w-5 h-5" />
+                    <a href={company.website} className="text-blue-600 hover:underline">{company.website}</a>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <CalendarDaysIcon className="w-5 h-5" />
+                    <span>Registered on: 16 Nov 2022</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Tags</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {['CAR', 'car2', 'good'].map((tag, index) => (
+                      <span key={index} className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="md:col-span-8">
+            <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+              {/* Review Form */}
+              <div className="mb-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <img 
+                    src="https://script.viserlab.com/ratelab/assets/images/default.png"
+                    alt="User Avatar"
+                    className="w-12 h-12 rounded-full"
+                  />
+                  <div>
+                    <h3 className="font-semibold text-gray-900">Write a Review</h3>
+                    <StarRating 
+                      rating={newReview.rating} 
+                      onRatingChange={(rating) => setNewReview(prev => ({ ...prev, rating }))}
+                    />
+                  </div>
+                </div>
+
+                <form onSubmit={handleReviewSubmit} className="space-y-4">
+                  <textarea
+                    placeholder="Write your review here..."
+                    value={newReview.comment}
+                    onChange={(e) => setNewReview(prev => ({ ...prev, comment: e.target.value }))}
+                    className="w-full min-h-[150px] p-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFB23F]/50"
+                  />
+                  <div className="flex justify-end">
+                    <button
+                      type="submit"
+                      className="px-6 py-2 bg-[#FFB23F] text-white rounded-lg hover:bg-[#FFB23F]/90 transition-colors"
+                    >
+                      {isLoggedIn ? 'Submit Review' : 'Login to Review'}
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              {/* Reviews List */}
+              <div className="space-y-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Recent Reviews</h3>
+                
+                {reviews.length > 0 ? (
+                  reviews.map((review) => (
+                    <div key={review._id} className="bg-gray-50 rounded-lg p-6">
+                      <div className="flex items-start gap-4">
+                        <img 
+                          src="https://script.viserlab.com/ratelab/assets/images/default.png"
+                          alt="Reviewer Avatar"
+                          className="w-12 h-12 rounded-full"
+                        />
+                        <div className="flex-1">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <h4 className="font-semibold text-gray-900">{review.user.username}</h4>
+                              <StarRating rating={review.rating} />
+                            </div>
+                            <span className="text-sm text-gray-500">
+                              {new Date(review.createdAt).toLocaleDateString()}
+                            </span>
+                          </div>
+                          <p className="mt-4 text-gray-600 leading-relaxed">{review.comment}</p>
+                          {isLoggedIn && review.user._id === localStorage.getItem('userId') && (
+                            <button
+                              onClick={() => handleDeleteReview(review._id)}
+                              className="mt-2 text-red-600 hover:text-red-800"
+                            >
+                              Delete Review
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="text-center text-gray-500 py-8">
+                    No reviews yet. Be the first to review this company!
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ReviewPage;
+

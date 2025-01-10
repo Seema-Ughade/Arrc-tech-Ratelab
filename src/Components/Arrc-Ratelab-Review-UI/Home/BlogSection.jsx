@@ -38,27 +38,26 @@ const BlogSection = () => {
   const posts = [
     {
       image: 'https://script.viserlab.com/ratelab/assets/images/frontend/blog/thumb_6354d367445a11666503527.jpg',
-      date: "2022-Oct-23",
-      title: "Maecenas nisi libero, gravida eget pulvinar quis, faucibus in ipsum....",
-      excerpt: "It is a long established fact that a reader will be distracted by the readable content of...",
+      date: "2024-Dec-31",
+      title: "Top 10 Gadgets of 2024: Detailed Reviews and Ratings",
+      excerpt: "Explore the most popular gadgets of 2024, with in-depth reviews and expert opinions.",
       link: "/BlogDetails"
     },
     {
       image: "https://script.viserlab.com/ratelab/assets/images/frontend/blog/thumb_6354d342a0e011666503490.jpeg",
-      date: "2022-Oct-23",
-      title: "Maecenas nisi libero, gravida eget pulvinar quis, faucibus in ipsum....",
-      excerpt: "It is a long established fact that a reader will be distracted by the readable content of...",
+      date: "2024-Dec-25",
+      title: "The Best Laptops for Developers in 2024: Performance Reviewed",
+      excerpt: "Find out which laptops are the best for coding, development, and productivity this year.",
       link: "/BlogDetails"
     },
     {
       image: "https://script.viserlab.com/ratelab/assets/images/frontend/blog/thumb_6354d3223fe191666503458.jpg",
-      date: "2022-Oct-23",
-      title: "Musk says Starlink active in Ukraine as Russian invasion disrupts internet",
-      excerpt: "It is a long established fact that a reader will be distracted by the readable content of...",
+      date: "2024-Dec-20",
+      title: "Customer Reviews Matter: How Feedback Shapes Product Success",
+      excerpt: "Learn how customer reviews influence product development and market strategies.",
       link: "/BlogDetails"
     }
-  ];
-
+  ]
   return (
     <section className="py-16 px-4 mt-16 bg-gray-50">
       <div className="max-w-7xl mx-auto">
