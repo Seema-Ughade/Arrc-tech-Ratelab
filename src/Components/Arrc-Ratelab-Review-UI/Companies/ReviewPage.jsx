@@ -70,8 +70,8 @@ const ReviewPage = () => {
       setError(null);
       
       const [companyRes, reviewsRes] = await Promise.all([
-        axios.get(`http://127.0.0.1:5000/api/companies/${id}`),
-        axios.get(`http://127.0.0.1:5000/api/reviews/${id}`)
+        axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/companies/${id}`),
+        axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${id}`)
       ]);
 
       setCompany(companyRes.data);
@@ -107,7 +107,7 @@ const ReviewPage = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        `http://127.0.0.1:5000/api/reviews/${id}`,
+        `https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${id}`,
         {
           rating: newReview.rating,
           comment: newReview.comment
@@ -138,7 +138,7 @@ const ReviewPage = () => {
   const handleDeleteReview = async (reviewId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://127.0.0.1:5000/api/reviews/${reviewId}`, {
+      await axios.delete(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${reviewId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setReviews(prevReviews => prevReviews.filter(review => review._id !== reviewId));
