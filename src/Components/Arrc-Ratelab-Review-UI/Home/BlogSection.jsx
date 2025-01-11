@@ -94,6 +94,8 @@ const BlogCard = ({ post }) => {
     <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="relative">
         <img
+          loading="lazy"
+
           src={post.featureImage}
           alt={post.title}
           className="w-full h-64 object-cover"

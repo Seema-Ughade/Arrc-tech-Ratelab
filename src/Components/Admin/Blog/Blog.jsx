@@ -167,6 +167,8 @@ const Blog = () => {
                 <tr key={post._id} className="hover:bg-gray-100 text-center">
   <td className="border border-gray-300 px-4 py-2 flex justify-center items-center">
     <img
+      loading="lazy"
+
       src={post.featureImage}
       alt={post.title}
       className="h-16 w-16 object-cover rounded-md"
