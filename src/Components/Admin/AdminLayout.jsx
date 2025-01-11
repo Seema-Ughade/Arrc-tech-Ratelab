@@ -29,6 +29,7 @@ import NotificationHistory from './Reports/NotificationHistory';
 import UserLoginHistory from './Reports/UserLoginHistory';
 import ReportRequest from './ReportRequest';
 import AllCompany from './Companies/AllCompany';
+import Blog from './Blog/Blog';
 // import Advertisement from './Advertisement/Advertisement';
 // import ManageUsers from './ManageUsers/ManageUsers';
 // import SupportTicket from './SupportTicket/SupportTicket';
@@ -73,6 +74,7 @@ export default function AdminLayout() {
             {/* <Route path="/" element={<Dashboard />} /> */}
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/Category" element={<Category />} />
+            <Route path="/Blog" element={<Blog />} />
 
             <Route path="/Companies/All" element={<AllCompanyManagement />} />
             <Route path="/Companies/Approved" element={<ApprovedCompanies />} />

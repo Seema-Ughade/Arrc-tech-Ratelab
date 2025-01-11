@@ -100,7 +100,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Search } from 'lucide-react'
-import slider2 from '../../../assets/slider2.jpg'
+import slidernew from '../../../assets/slidernew.jpg'
 
 const Slider = () => {
   const [searchQuery, setSearchQuery] = React.useState('')
@@ -118,7 +118,7 @@ const Slider = () => {
         style={{
           backgroundImage:
             // 'url(https://script.viserlab.com/ratelab/assets/images/frontend/banner/6353a8fcb56c71666427132.jpg)',
-            `url(${slider2})`,
+            `url(${slidernew})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 0.9,

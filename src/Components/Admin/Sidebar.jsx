@@ -80,6 +80,7 @@ export function Sidebar({ isOpen, collapsed }) {
   const menuItems = [
     { icon: HomeIcon, text: "Dashboard", path: "/Admin/Dashboard" },
     { icon: CategoryIcon, text: "Category", path: "/Admin/Category", badge: "1" },
+    { icon: CategoryIcon, text: "Blog", path: "/Admin/Blog" },
     { 
       icon: BusinessIcon, 
       text: "Companies", 
