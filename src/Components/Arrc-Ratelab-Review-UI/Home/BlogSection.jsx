@@ -128,7 +128,7 @@ const BlogSection = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/api/posts");
+        const response = await axios.get("https://arrc-tech-ratelab-backend.onrender.com/api/posts");
         if (response.data) {
           setPosts(response.data);
         }

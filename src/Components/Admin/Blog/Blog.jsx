@@ -23,7 +23,7 @@ const Blog = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5000/api/posts');
+      const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/posts');
       setPosts(response.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
@@ -53,10 +53,10 @@ const Blog = () => {
 
     try {
       if (isEditMode) {
-        await axios.put(`http://127.0.0.1:5000/api/posts/${currentPost._id}`, formData);
+        await axios.put(`https://arrc-tech-ratelab-backend.onrender.com/api/posts/${currentPost._id}`, formData);
         alert('Post updated successfully');
       } else {
-        await axios.post('http://127.0.0.1:5000/api/posts', formData);
+        await axios.post('https://arrc-tech-ratelab-backend.onrender.com/api/posts', formData);
         alert('Post created successfully');
       }
       fetchPosts();
@@ -82,7 +82,7 @@ const Blog = () => {
 
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`http://127.0.0.1:5000/api/posts/${postId}`);
+      await axios.delete(`https://arrc-tech-ratelab-backend.onrender.com/api/posts/${postId}`);
       alert('Post deleted successfully');
       fetchPosts();
     } catch (error) {
