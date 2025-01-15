@@ -286,7 +286,7 @@ const ContactUs = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await axios.post("https://arrc-tech-ratelab-backend.onrender.com/api/contact", formData);
+      const response = await axios.post("https://arrc-tech-ratelab-backend-project.onrender.com/api/contact", formData);
       setSubmitMessage(response.data.message);
       setFormData({ fullName: "", email: "", subject: "", message: "" });
     } catch (error) {

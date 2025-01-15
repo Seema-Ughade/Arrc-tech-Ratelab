@@ -70,8 +70,8 @@
 // // //       setError(null);
       
 // // //       const [companyRes, reviewsRes] = await Promise.all([
-// // //         axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/companies/${id}`),
-// // //         axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${id}`)
+// // //         axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${id}`),
+// // //         axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews/${id}`)
 // // //       ]);
 
 // // //       setCompany(companyRes.data);
@@ -107,7 +107,7 @@
 // // //     try {
 // // //       const token = localStorage.getItem('token');
 // // //       const response = await axios.post(
-// // //         `https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${id}`,
+// // //         `https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews/${id}`,
 // // //         {
 // // //           rating: newReview.rating,
 // // //           comment: newReview.comment
@@ -138,7 +138,7 @@
 // // //   const handleDeleteReview = async (reviewId) => {
 // // //     try {
 // // //       const token = localStorage.getItem('token');
-// // //       await axios.delete(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${reviewId}`, {
+// // //       await axios.delete(`https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews/${reviewId}`, {
 // // //         headers: { Authorization: `Bearer ${token}` },
 // // //       });
 // // //       setReviews(prevReviews => prevReviews.filter(review => review._id !== reviewId));
@@ -366,12 +366,12 @@
 // //     try {
 // //       setIsLoading(true);
 // //       setError(null);
-// //       const companyRes = await axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/companies/${id}`);
+// //       const companyRes = await axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${id}`);
 // //       setCompany(companyRes.data);
       
 // //       // Fetch reviews separately and handle potential errors
 // //       try {
-// //         const reviewsRes = await axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${id}`);
+// //         const reviewsRes = await axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews/${id}`);
 // //         setReviews(reviewsRes.data);
 // //       } catch (reviewError) {
 // //         console.error('Error fetching reviews:', reviewError);
@@ -425,7 +425,7 @@
 // //       }];
 
 // //       const response = await axios.post(
-// //         'https://arrc-tech-ratelab-backend.onrender.com/api/reviews',
+// //         'https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews',
 // //         reviewData,
 // //         {
 // //           headers: { Authorization: `Bearer ${token}` },
@@ -820,8 +820,8 @@
 //       setError(null);
       
 //       const [companyRes, reviewsRes] = await Promise.all([
-//         axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/companies/${id}`),
-//         axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews`)
+//         axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${id}`),
+//         axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews`)
 //       ]);
 
 //       setCompany(companyRes.data);
@@ -868,7 +868,7 @@
 //       }];
 
 //       const response = await axios.post(
-//         'https://arrc-tech-ratelab-backend.onrender.com/api/reviews',
+//         'https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews',
 //         reviewData,
 //         {
 //           headers: { Authorization: `Bearer ${token}` },
@@ -897,7 +897,7 @@
 //   const handleDeleteReview = async (reviewId) => {
 //     try {
 //       const token = localStorage.getItem('token');
-//       await axios.delete(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${reviewId}`, {
+//       await axios.delete(`https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews/${reviewId}`, {
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 //       setReviews(prevReviews => prevReviews.filter(review => review._id !== reviewId));
@@ -1291,8 +1291,8 @@ const ReviewPage = () => {
       setError(null);
       
       const [companyRes, reviewsRes] = await Promise.all([
-        axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/companies/${id}`),
-        axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews`)
+        axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${id}`),
+        axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews`)
       ]);
 
       setCompany(companyRes.data);
@@ -1333,7 +1333,7 @@ const ReviewPage = () => {
       if (editingReview) {
         // Update existing review
         response = await axios.put(
-          `https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${editingReview._id}`,
+          `https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews/${editingReview._id}`,
           {
             rating: newReview.rating,
             fullReview: newReview.fullReview,
@@ -1357,7 +1357,7 @@ const ReviewPage = () => {
         }];
 
         response = await axios.post(
-          'https://arrc-tech-ratelab-backend.onrender.com/api/reviews',
+          'https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews',
           reviewData,
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -1387,7 +1387,7 @@ const ReviewPage = () => {
   const handleDeleteReview = async (reviewId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`https://arrc-tech-ratelab-backend.onrender.com/api/reviews/${reviewId}`, {
+      await axios.delete(`https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews/${reviewId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setReviews(prevReviews => prevReviews.filter(review => review._id !== reviewId));

@@ -130,7 +130,7 @@ const BlogSection = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("https://arrc-tech-ratelab-backend.onrender.com/api/posts");
+        const response = await axios.get("https://arrc-tech-ratelab-backend-project.onrender.com/api/posts");
         if (response.data) {
           setPosts(response.data);
         }

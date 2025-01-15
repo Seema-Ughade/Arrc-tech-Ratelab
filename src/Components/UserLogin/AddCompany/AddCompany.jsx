@@ -289,7 +289,7 @@
 //   useEffect(() => {
 //     const fetchCategories = async () => {
 //       try {
-//         const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/categories');
+//         const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/categories');
 //         setCategories(response.data);
 //       } catch (error) {
 //         console.error('Error fetching categories:', error);
@@ -339,7 +339,7 @@
 //     });
 
 //     try {
-//       const response = await axios.post('https://arrc-tech-ratelab-backend.onrender.com/api/companies', formDataToSend, {
+//       const response = await axios.post('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies', formDataToSend, {
 //         headers: { 'Content-Type': 'multipart/form-data' },
 //       });
 
@@ -592,7 +592,7 @@ const AddCompany = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/categories');
+        const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/categories');
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -653,7 +653,7 @@ const AddCompany = () => {
     }
 
     try {
-      const response = await axios.post('https://arrc-tech-ratelab-backend.onrender.com/api/companies', formDataToSend, {
+      const response = await axios.post('http://127.0.0.1:5000/api/companies', formDataToSend, {
         headers: { 
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${localStorage.getItem('token')}`

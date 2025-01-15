@@ -19,7 +19,7 @@ export default function UserLogin() {
 
     if (validateForm()) {
         try {
-            const response = await fetch('https://arrc-tech-ratelab-backend.onrender.com/api/login', {
+            const response = await fetch('https://arrc-tech-ratelab-backend-project.onrender.com/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

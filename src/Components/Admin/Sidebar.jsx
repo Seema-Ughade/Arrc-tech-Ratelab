@@ -90,7 +90,7 @@ export function Sidebar({ isOpen, collapsed }) {
       key: "companies",
       submenuItems: [
         { text: "All Companies", path: "/Admin/Companies/All" },
-        { text: "AllCompany", path: "/Admin/Companies/Allnew" },
+        { text: "Bulk upload", path: "/Admin/Companies/Allnew" },
         { text: "Approved", path: "/Admin/Companies/Approved" },
         { text: "Pending", path: "/Admin/Companies/Pending", badge: "134" },
         { text: "Rejected", path: "/Admin/Companies/Rejected" }

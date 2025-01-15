@@ -234,7 +234,7 @@ const AdvertisementList = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/advertisements');
+      const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/advertisements');
       setAdvertisements(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching advertisements:', error);
@@ -258,7 +258,7 @@ const AdvertisementList = () => {
     try {
       const adToUpdate = advertisements.find(ad => ad._id === id);
       const newStatus = adToUpdate.status === 'enable' ? 'disable' : 'enable';
-      await axios.patch(`https://arrc-tech-ratelab-backend.onrender.com/api/advertisements/${id}`, { status: newStatus });
+      await axios.patch(`https://arrc-tech-ratelab-backend-project.onrender.com/api/advertisements/${id}`, { status: newStatus });
       fetchAdvertisements();
     } catch (error) {
       console.error('Error updating advertisement status:', error);
@@ -268,7 +268,7 @@ const AdvertisementList = () => {
 
   const handleSubmitAdd = async (newAd) => {
     try {
-      await axios.post('https://arrc-tech-ratelab-backend.onrender.com/api/advertisements', newAd, {
+      await axios.post('https://arrc-tech-ratelab-backend-project.onrender.com/api/advertisements', newAd, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -287,7 +287,7 @@ const AdvertisementList = () => {
       if (!id) {
         throw new Error('Advertisement ID is missing');
       }
-      await axios.put(`https://arrc-tech-ratelab-backend.onrender.com/api/advertisements/${id}`, updatedAd, {
+      await axios.put(`https://arrc-tech-ratelab-backend-project.onrender.com/api/advertisements/${id}`, updatedAd, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

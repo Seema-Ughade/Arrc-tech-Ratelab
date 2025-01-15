@@ -21,7 +21,7 @@ const AdminLoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://arrc-tech-ratelab-backend.onrender.com/api/auth/login', formData);
+      const response = await axios.post('https://arrc-tech-ratelab-backend-project.onrender.com/api/auth/login', formData);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));

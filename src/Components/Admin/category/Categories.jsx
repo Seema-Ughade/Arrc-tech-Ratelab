@@ -396,6 +396,7 @@
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Spin } from 'antd';
 
 const icons = [
   { id: 1, name: 'plane', label: 'Plane' },
@@ -433,7 +434,7 @@ export default function Categories() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/categories')
+      const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/categories')
       setCategories(response.data)
       setLoading(false)
     } catch (error) {
@@ -453,7 +454,7 @@ export default function Categories() {
       return
     }
     try {
-      const response = await axios.post('https://arrc-tech-ratelab-backend.onrender.com/api/categories', newCategory)
+      const response = await axios.post('https://arrc-tech-ratelab-backend-project.onrender.com/api/categories', newCategory)
       setCategories([...categories, response.data])
       setNewCategory({ name: '', icon: '' })
       setIsAddModalOpen(false)
@@ -474,7 +475,7 @@ export default function Categories() {
       return
     }
     try {
-      const response = await axios.put(`https://arrc-tech-ratelab-backend.onrender.com/api/categories/${selectedCategory._id}`, editCategory)
+      const response = await axios.put(`https://arrc-tech-ratelab-backend-project.onrender.com/api/categories/${selectedCategory._id}`, editCategory)
       setCategories(categories.map(cat => 
         cat._id === selectedCategory._id ? response.data : cat
       ))
@@ -488,7 +489,7 @@ export default function Categories() {
   const handleToggleStatus = async (category) => {
     try {
       const newStatus = category.status === 'Enable' ? 'Disable' : 'Enable'
-      const response = await axios.patch(`https://arrc-tech-ratelab-backend.onrender.com/api/categories/${category._id}/toggle-status`)
+      const response = await axios.patch(`https://arrc-tech-ratelab-backend-project.onrender.com/api/categories/${category._id}/toggle-status`)
       setCategories(categories.map(cat =>
         cat._id === category._id ? response.data : cat
       ))
@@ -519,9 +520,12 @@ export default function Categories() {
   )
 
   if (loading) {
-    return <div className="flex justify-center items-center h-screen">Loading...</div>
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Spin size="large" />
+      </div>
+    );
   }
-
   return (
     <div className="p-6 font-sans">
       <div className="flex justify-between items-center mb-6">

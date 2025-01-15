@@ -142,11 +142,11 @@ const BlogDetails = () => {
     const fetchPost = async () => {
       try {
         // Fetch the specific blog post details by ID
-        const postResponse = await axios.get(`https://arrc-tech-ratelab-backend.onrender.com/api/posts/${id}`);
+        const postResponse = await axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/posts/${id}`);
         setPost(postResponse.data);
 
         // Fetch the latest blog posts
-        const latestResponse = await axios.get("https://arrc-tech-ratelab-backend.onrender.com/api/posts");
+        const latestResponse = await axios.get("https://arrc-tech-ratelab-backend-project.onrender.com/api/posts");
         setLatestPosts(latestResponse.data);
       } catch (error) {
         console.error("Error fetching blog post details:", error);

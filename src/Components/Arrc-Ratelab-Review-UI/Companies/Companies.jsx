@@ -447,7 +447,7 @@ export default function CompanyListing() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/categories')
+      const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/categories')
       setCategories(response.data || [])
     } catch (error) {
       console.error('Error fetching categories:', error)
@@ -457,10 +457,23 @@ export default function CompanyListing() {
     }
   }
 
+  // const fetchCompanies = async () => {
+  //   try {
+  //     const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies')
+  //     setCompanies(Array.isArray(response.data) ? response.data : [])
+  //   } catch (error) {
+  //     console.error('Error fetching companies:', error)
+  //     setCompanies([])
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
+
   const fetchCompanies = async () => {
     try {
-      const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/companies')
-      setCompanies(Array.isArray(response.data) ? response.data : [])
+      const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies')
+      const approvedCompanies = response.data.filter(company => company.status === 'Approved');
+      setCompanies(Array.isArray(approvedCompanies) ? approvedCompanies : [])
     } catch (error) {
       console.error('Error fetching companies:', error)
       setCompanies([])
@@ -469,9 +482,16 @@ export default function CompanyListing() {
     }
   }
 
+
+
+
+
+
+
+
   const fetchAdvertisement = async () => {
     try {
-      const response = await axios.get('https://arrc-tech-ratelab-backend.onrender.com/api/advertisements')
+      const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/advertisements')
       const ad = response.data.find(ad => ad._id === '677f92162964d216f0acb0f7')
       setAdvertisement(ad)
     } catch (error) {
