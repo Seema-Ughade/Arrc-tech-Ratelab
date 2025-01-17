@@ -369,12 +369,12 @@ const Navbar = () => {
   const languages = [
     {
       code: 'en',
-      name: 'English',
-      flag: 'https://script.viserlab.com/ratelab/assets/images/language/664c6885ecc541716283525.png'
+      name: 'Language',
+      flag: 'https://script.viserlab.com/ratelab/assets/images/language/664c6869b970c1716283497.png'
     },
     {
       code: 'hi',
-      name: 'Hindi',
+      name: 'English',
       flag: 'https://script.viserlab.com/ratelab/assets/images/language/664c6869b970c1716283497.png'
     },
     {
@@ -486,7 +486,7 @@ const Navbar = () => {
 
         {/* Desktop Language & Login/Dashboard */}
         <div className="hidden items-center gap-6 lg:flex">
-          <div className="relative" ref={languageRef}>
+          {/* <div className="relative" ref={languageRef}>
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-2 hover:text-orange-500"
@@ -518,7 +518,7 @@ const Navbar = () => {
                 ))}
               </div>
             )}
-          </div>
+          </div> */}
           {!user ? (
             <Link
               to="/user/login"
@@ -605,7 +605,7 @@ const Navbar = () => {
             </div>
             <div className="px-4 pb-6">
               <div className="flex items-center justify-between py-4">
-                <div className="relative text-white">
+                {/* <div className="relative text-white">
                   <button
                     onClick={toggleLanguage}
                     className="flex items-center gap-2 text-lg"
@@ -636,7 +636,7 @@ const Navbar = () => {
                       ))}
                     </div>
                   )}
-                </div>
+                </div> */}
                 {!user ? (
                   <Link
                     to="/user/login"

@@ -91,33 +91,32 @@ import axios from 'axios';
 
 const BlogCard = ({ post }) => {
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <div className="group bg-white rounded-lg overflow-hidden shadow-md transition-transform transform hover:scale-105 hover:shadow-lg duration-300 ease-in-out">
       <div className="relative">
         <img
           loading="lazy"
-
           src={post.featureImage}
           alt={post.title}
-          className="w-full h-64 object-cover"
+          className="w-full h-64 object-cover transition-transform transform group-hover:scale-110 duration-300 ease-in-out"
         />
-        <span className="absolute top-4 right-4 bg-orange-400 text-white px-3 py-1 rounded-md text-sm">
+        <span className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-md text-sm shadow-md">
           {new Date(post.createdAt).toLocaleDateString()}
         </span>
       </div>
       <div className="p-6">
-        <h3 className="text-xl md:text-2xl font-bold text-navy-900 mb-4 line-clamp-2">
+        <h3 className="text-xl md:text-2xl font-bold text-navy-900 mb-3 line-clamp-2 group-hover:text-orange-500 transition-colors duration-300">
           {post.title}
         </h3>
         <div
-  className="text-gray-600 mb-4 line-clamp-3 mt-4  leading-relaxed"  // Limit to 3 lines
-  dangerouslySetInnerHTML={{ __html: post.description }}  // Render HTML content properly
-/>
+          className="text-gray-600 mb-4 line-clamp-3 mt-2 leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: post.description }}
+        />
         <Link
           to={`/blogdetails/${post._id}`}
-          className="inline-flex items-center text-orange-400 hover:text-orange-500 transition-colors"
+          className="inline-flex items-center text-orange-500 hover:text-orange-600 transition-colors duration-300 font-semibold"
         >
           Read More
-          <ArrowRight className="ml-2 w-4 h-4" />
+          <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
         </Link>
       </div>
     </div>

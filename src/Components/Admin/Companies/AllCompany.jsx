@@ -561,7 +561,7 @@ const AllCompany = () => {
     return reviews.filter(review =>
       (typeof review.reviewer === 'string' && review.reviewer.toLowerCase().includes(searchQuery.toLowerCase())) ||
       (typeof review.company === 'string' && review.company.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (typeof review.review === 'string' && review.review.toLowerCase().includes(searchQuery.toLowerCase()))
+      (typeof review.fullReview === 'string' && review.fullReview.toLowerCase().includes(searchQuery.toLowerCase()))
     );
   }, [reviews, searchQuery]);
 
@@ -601,7 +601,7 @@ const AllCompany = () => {
       )
     },
     { title: 'Company', dataIndex: 'company', key: 'company' },
-    { title: 'Review', dataIndex: 'review', key: 'review',
+    { title: 'fullReview', dataIndex: 'fullReview', key: 'fullReview',
       render: (text, record) => (
         <div>
           <div>{text}</div>

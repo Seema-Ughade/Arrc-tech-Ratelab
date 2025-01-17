@@ -469,23 +469,55 @@ export default function CompanyListing() {
   //   }
   // }
 
+  // const fetchCompanies = async () => {
+  //   try {
+  //     const response = await axios.get('http://127.0.0.1:5000/api/companies')
+  //     const approvedCompanies = response.data.filter(company => company.status === 'Approved');
+  //     setCompanies(Array.isArray(approvedCompanies) ? approvedCompanies : [])
+  //   } catch (error) {
+  //     console.error('Error fetching companies:', error)
+  //     setCompanies([])
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // }
+
+
+
+
   const fetchCompanies = async () => {
     try {
-      const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies')
-      const approvedCompanies = response.data.filter(company => company.status === 'Approved');
-      setCompanies(Array.isArray(approvedCompanies) ? approvedCompanies : [])
+      const [companiesResponse, reviewsResponse] = await Promise.all([
+        axios.get('http://127.0.0.1:5000/api/companies'),
+        axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews')
+      ]);
+  
+      const approvedCompanies = companiesResponse.data.filter(company => company.status === 'Approved');
+      const reviews = reviewsResponse.data;
+  
+      const companiesWithReviews = approvedCompanies.map(company => {
+        const companyReviews = reviews.filter(review => review.company === company.companyName);
+        const averageRating = companyReviews.length > 0
+          ? companyReviews.reduce((sum, review) => sum + review.rating, 0) / companyReviews.length
+          : 0;
+  
+        return {
+          ...company,
+          reviews: companyReviews,
+          rating: averageRating
+        };
+      });
+  
+      setCompanies(companiesWithReviews);
     } catch (error) {
-      console.error('Error fetching companies:', error)
-      setCompanies([])
+      console.error('Error fetching companies and reviews:', error);
+      setCompanies([]);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
-
-
-
-
-
+  };
+  
+  
 
 
 

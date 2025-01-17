@@ -653,7 +653,7 @@ const AddCompany = () => {
     }
 
     try {
-      const response = await axios.post('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies', formDataToSend, {
+      const response = await axios.post('http://127.0.0.1:5000/api/companies', formDataToSend, {
         headers: { 
           'Content-Type': 'multipart/form-data',
           'Authorization': `Bearer ${localStorage.getItem('token')}`

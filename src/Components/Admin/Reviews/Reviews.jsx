@@ -399,7 +399,7 @@ const Reviews = () => {
               {review.company}
             </div>
             <div className="md:col-span-5">
-              <div className="text-gray-600">{review.review}</div>
+              <div className="text-gray-600">{review.fullReview}</div>
               <div className="mt-1">
                 <StarRating rating={review.rating} />
               </div>

@@ -10,6 +10,8 @@ import TestimonialSection from './Home/TestimonialSection'
 const Layout = () => {
   return (
     <div>
+
+      
       <Navbar />
       <Slider />
       <CategorySection />

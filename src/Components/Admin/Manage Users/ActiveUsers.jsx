@@ -485,7 +485,7 @@
 // //     const fetchUsers = async () => {
 // //       try {
 // //         setLoading(true);
-// //         const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/users');
+// //         const response = await axios.get('http://127.0.0.1:5000/api/users');
 // //         setUsers(response.data);
 // //         setFilteredUsers(response.data);
 // //       } catch (err) {
@@ -523,7 +523,7 @@
 
 // //   const sendEmailVerification = async (userId) => {
 // //     try {
-// //       await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/send-email-verification`);
+// //       await axios.post(`http://127.0.0.1:5000/api/users/${userId}/send-email-verification`);
 // //       alert('Verification email sent!');
 // //     } catch (error) {
 // //       console.error('Error sending verification email:', error);
@@ -543,7 +543,7 @@
 // //       const verificationCode = prompt('Enter the verification code sent to your phone:');
 // //       if (verificationCode) {
 // //         await confirmationResult.confirm(verificationCode);
-// //         await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/verify-mobile`);
+// //         await axios.post(`http://127.0.0.1:5000/api/users/${userId}/verify-mobile`);
 // //         alert('Mobile number verified successfully!');
 // //       }
 // //     } catch (error) {
@@ -900,7 +900,7 @@
 // //                   <button
 // //                     onClick={async () => {
 // //                       try {
-// //                         await axios.put(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${selectedUser._id}`, selectedUser);
+// //                         await axios.put(`http://127.0.0.1:5000/api/users/${selectedUser._id}`, selectedUser);
 // //                         alert('User information updated successfully!');
 // //                       } catch (error) {
 // //                         console.error('Error updating user:', error);
@@ -984,7 +984,7 @@
 //     const fetchUsers = async () => {
 //       try {
 //         setLoading(true);
-//         const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/users');
+//         const response = await axios.get('http://127.0.0.1:5000/api/users');
 //         setUsers(response.data);
 //         setFilteredUsers(response.data);
 //       } catch (err) {
@@ -1014,7 +1014,7 @@
 
 //   const verifyEmail = async (token) => {
 //     try {
-//       const response = await axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/verify-email/${token}`);
+//       const response = await axios.get(`http://127.0.0.1:5000/api/users/verify-email/${token}`);
 //       setVerificationStatus({ success: true, message: response.data.message });
 //     } catch (error) {
 //       setVerificationStatus({ success: false, message: error.response?.data?.message || 'Verification failed' });
@@ -1037,7 +1037,7 @@
 
 //   // const sendEmailVerification = async (userId) => {
 //   //   try {
-//   //     await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/send-email-verification`);
+//   //     await axios.post(`http://127.0.0.1:5000/api/users/${userId}/send-email-verification`);
 //   //     alert('Verification email sent!');
 //   //   } catch (error) {
 //   //     console.error('Error sending verification email:', error);
@@ -1057,7 +1057,7 @@
 //   //     const verificationCode = prompt('Enter the verification code sent to your phone:');
 //   //     if (verificationCode) {
 //   //       await confirmationResult.confirm(verificationCode);
-//   //       await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/verify-mobile`);
+//   //       await axios.post(`http://127.0.0.1:5000/api/users/${userId}/verify-mobile`);
 //   //       alert('Mobile number verified successfully!');
 //   //     }
 //   //   } catch (error) {
@@ -1067,7 +1067,7 @@
 //   // };
 //   const sendEmailVerification = async (userId) => {
 //     try {
-//       await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/send-email-verification`);
+//       await axios.post(`http://127.0.0.1:5000/api/users/${userId}/send-email-verification`);
 //       alert('Verification email sent!');
 //     } catch (error) {
 //       console.error('Error sending verification email:', error);
@@ -1077,12 +1077,12 @@
 
 //   const sendMobileVerification = async (userId, mobile) => {
 //     try {
-//       const response = await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/send-mobile-verification`, { mobile });
+//       const response = await axios.post(`http://127.0.0.1:5000/api/users/${userId}/send-mobile-verification`, { mobile });
       
 //       if (response.data.success) {
 //         const verificationCode = prompt('Enter the verification code sent to your phone:');
 //         if (verificationCode) {
-//           const verifyResponse = await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/verify-mobile`, { verificationCode });
+//           const verifyResponse = await axios.post(`http://127.0.0.1:5000/api/users/${userId}/verify-mobile`, { verificationCode });
           
 //           if (verifyResponse.data.success) {
 //             alert('Mobile number verified successfully!');
@@ -1477,7 +1477,7 @@
 //                   <button
 //                     onClick={async () => {
 //                       try {
-//                         await axios.put(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${selectedUser._id}`, selectedUser);
+//                         await axios.put(`http://127.0.0.1:5000/api/users/${selectedUser._id}`, selectedUser);
 //                         alert('User information updated successfully!');
 //                       } catch (error) {
 //                         console.error('Error updating user:', error);
@@ -1505,7 +1505,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { FaSearch, FaTimes, FaKey, FaBell, FaBan, FaEnvelope } from 'react-icons/fa';
-import { Spin } from 'antd';
+import { Spin, message } from 'antd';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -1520,18 +1520,17 @@ const ActiveUsers = () => {
   const { token } = useParams();
   const navigate = useNavigate();
   const [verificationStatus, setVerificationStatus] = useState(null);
-  const [verificationCode, setVerificationCode] = useState('');
-  const [customToken, setCustomToken] = useState('');
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/users');
+        const response = await axios.get('http://127.0.0.1:5000/api/users');
         setUsers(response.data);
         setFilteredUsers(response.data);
       } catch (err) {
         setError('Failed to fetch users');
+        console.error('Error fetching users:', err);
       } finally {
         setLoading(false);
       }
@@ -1557,7 +1556,7 @@ const ActiveUsers = () => {
 
   const verifyEmail = async (token) => {
     try {
-      const response = await axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/verify-email/${token}`);
+      const response = await axios.get(`http://127.0.0.1:5000/api/users/verify-email/${token}`);
       setVerificationStatus({ success: true, message: response.data.message });
     } catch (error) {
       setVerificationStatus({ success: false, message: error.response?.data?.message || 'Verification failed' });
@@ -1580,76 +1579,196 @@ const ActiveUsers = () => {
 
   const sendEmailVerification = async (userId) => {
     try {
-      await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/send-email-verification`);
-      alert('Verification email sent!');
+      await axios.post(`http://127.0.0.1:5000/api/users/${userId}/send-email-verification`);
+      message.success('Verification email sent!');
     } catch (error) {
       console.error('Error sending verification email:', error);
-      alert('Failed to send verification email');
+      message.error('Failed to send verification email');
     }
   };
 
-  // const sendMobileVerification = async (userId, mobile) => {
-  //   try {
-  //     const response = await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/send-mobile-verification`, { mobile });
-      
-  //     if (response.data.success) {
-  //       const verificationCode = prompt('Enter the verification code sent to your phone:');
-  //       if (verificationCode) {
-  //         const verifyResponse = await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/verify-mobile`, { verificationCode });
-          
-  //         if (verifyResponse.data.success) {
-  //           alert('Mobile number verified successfully!');
-  //           const updatedUser = { ...selectedUser, mobileVerified: true };
-  //           setSelectedUser(updatedUser);
-  //           setUsers(users.map(user => user._id === userId ? updatedUser : user));
-  //         } else {
-  //           alert('Invalid verification code. Please try again.');
-  //         }
-  //       }
-  //     } else {
-  //       alert('Failed to send verification code. Please try again.');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error verifying mobile number:', error);
-  //     alert('Failed to verify mobile number: ' + error.response?.data?.message || error.message);
-  //   }
-  // };
   const sendMobileVerification = async (userId, mobile) => {
     try {
-      const response = await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/users/${userId}/send-mobile-verification`, { mobile });
+      const response = await axios.post(`http://127.0.0.1:5000/api/users/${userId}/send-mobile-verification`, { mobile });
       
       if (response.data.success) {
-        setCustomToken(response.data.customToken);
         const verificationCode = prompt('Enter the verification code sent to your phone:');
         if (verificationCode) {
-          await verifyMobile(userId, verificationCode, response.data.customToken);
+          await verifyMobile(userId, verificationCode);
         }
       } else {
-        alert('Failed to send verification code. Please try again.');
+        message.error('Failed to send verification code. Please try again.');
       }
     } catch (error) {
       console.error('Error sending mobile verification:', error);
-      alert('Failed to send verification code: ' + error.response?.data?.message || error.message);
+      message.error('Failed to send verification code: ' + error.response?.data?.message || error.message);
     }
   };
   
-  const verifyMobile = async (userId, verificationCode, customToken) => {
+  const verifyMobile = async (userId, verificationCode) => {
     try {
-      const response = await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/users/${userId}/verify-mobile`, { verificationCode, customToken });
+      const response = await axios.post(`http://127.0.0.1:5000/api/users/${userId}/verify-mobile`, { verificationCode });
       
       if (response.data.success) {
-        alert('Mobile number verified successfully!');
+        message.success('Mobile number verified successfully!');
         const updatedUser = { ...selectedUser, mobileVerified: true };
         setSelectedUser(updatedUser);
         setUsers(users.map(user => user._id === userId ? updatedUser : user));
       } else {
-        alert('Invalid verification code. Please try again.');
+        message.error('Invalid verification code. Please try again.');
       }
     } catch (error) {
       console.error('Error verifying mobile number:', error);
-      alert('Failed to verify mobile number: ' + error.response?.data?.message || error.message);
+      message.error('Failed to verify mobile number: ' + error.response?.data?.message || error.message);
     }
   };
+// import React, { useState, useEffect } from 'react';
+// import { FaSearch, FaTimes, FaKey, FaBell, FaBan, FaEnvelope } from 'react-icons/fa';
+// import { Spin } from 'antd';
+// import axios from 'axios';
+// import { useParams, useNavigate } from 'react-router-dom';
+
+// const ActiveUsers = () => {
+//   const [users, setUsers] = useState([]);
+//   const [filteredUsers, setFilteredUsers] = useState([]);
+//   const [searchTerm, setSearchTerm] = useState('');
+//   const [selectedUser, setSelectedUser] = useState(null);
+//   const [showDetails, setShowDetails] = useState(false);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+//   const { token } = useParams();
+//   const navigate = useNavigate();
+//   const [verificationStatus, setVerificationStatus] = useState(null);
+//   const [verificationCode, setVerificationCode] = useState('');
+//   const [customToken, setCustomToken] = useState('');
+
+//   useEffect(() => {
+//     const fetchUsers = async () => {
+//       try {
+//         setLoading(true);
+//         const response = await axios.get('http://127.0.0.1:5000/api/users');
+//         setUsers(response.data);
+//         setFilteredUsers(response.data);
+//       } catch (err) {
+//         setError('Failed to fetch users');
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchUsers();
+//   }, []);
+
+//   useEffect(() => {
+//     const filtered = users.filter(user => 
+//       (user.firstName && user.firstName.toLowerCase().includes(searchTerm.toLowerCase())) ||
+//       (user.lastName && user.lastName.toLowerCase().includes(searchTerm.toLowerCase())) ||
+//       (user.email && user.email.toLowerCase().includes(searchTerm.toLowerCase()))
+//     );
+//     setFilteredUsers(filtered);
+//   }, [searchTerm, users]);
+
+//   useEffect(() => {
+//     if (token) {
+//       verifyEmail(token);
+//     }
+//   }, [token]);
+
+//   const verifyEmail = async (token) => {
+//     try {
+//       const response = await axios.get(`http://127.0.0.1:5000/api/users/verify-email/${token}`);
+//       setVerificationStatus({ success: true, message: response.data.message });
+//     } catch (error) {
+//       setVerificationStatus({ success: false, message: error.response?.data?.message || 'Verification failed' });
+//     }
+//   };
+
+//   const handleSearch = (e) => {
+//     setSearchTerm(e.target.value);
+//   };
+
+//   const handleDetails = (user) => {
+//     setSelectedUser(user);
+//     setShowDetails(true);
+//   };
+
+//   const handleCloseDetails = () => {
+//     setSelectedUser(null);
+//     setShowDetails(false);
+//   };
+
+//   const sendEmailVerification = async (userId) => {
+//     try {
+//       await axios.post(`http://127.0.0.1:5000/api/users/${userId}/send-email-verification`);
+//       alert('Verification email sent!');
+//     } catch (error) {
+//       console.error('Error sending verification email:', error);
+//       alert('Failed to send verification email');
+//     }
+//   };
+
+//   // const sendMobileVerification = async (userId, mobile) => {
+//   //   try {
+//   //     const response = await axios.post(`http://127.0.0.1:5000/api/users/${userId}/send-mobile-verification`, { mobile });
+      
+//   //     if (response.data.success) {
+//   //       const verificationCode = prompt('Enter the verification code sent to your phone:');
+//   //       if (verificationCode) {
+//   //         const verifyResponse = await axios.post(`http://127.0.0.1:5000/api/users/${userId}/verify-mobile`, { verificationCode });
+          
+//   //         if (verifyResponse.data.success) {
+//   //           alert('Mobile number verified successfully!');
+//   //           const updatedUser = { ...selectedUser, mobileVerified: true };
+//   //           setSelectedUser(updatedUser);
+//   //           setUsers(users.map(user => user._id === userId ? updatedUser : user));
+//   //         } else {
+//   //           alert('Invalid verification code. Please try again.');
+//   //         }
+//   //       }
+//   //     } else {
+//   //       alert('Failed to send verification code. Please try again.');
+//   //     }
+//   //   } catch (error) {
+//   //     console.error('Error verifying mobile number:', error);
+//   //     alert('Failed to verify mobile number: ' + error.response?.data?.message || error.message);
+//   //   }
+//   // };
+//   const sendMobileVerification = async (userId, mobile) => {
+//     try {
+//       const response = await axios.post(`http://127.0.0.1:5000/users/${userId}/send-mobile-verification`, { mobile });
+      
+//       if (response.data.success) {
+//         setCustomToken(response.data.customToken);
+//         const verificationCode = prompt('Enter the verification code sent to your phone:');
+//         if (verificationCode) {
+//           await verifyMobile(userId, verificationCode, response.data.customToken);
+//         }
+//       } else {
+//         alert('Failed to send verification code. Please try again.');
+//       }
+//     } catch (error) {
+//       console.error('Error sending mobile verification:', error);
+//       alert('Failed to send verification code: ' + error.response?.data?.message || error.message);
+//     }
+//   };
+  
+//   const verifyMobile = async (userId, verificationCode, customToken) => {
+//     try {
+//       const response = await axios.post(`http://127.0.0.1:5000/users/${userId}/verify-mobile`, { verificationCode, customToken });
+      
+//       if (response.data.success) {
+//         alert('Mobile number verified successfully!');
+//         const updatedUser = { ...selectedUser, mobileVerified: true };
+//         setSelectedUser(updatedUser);
+//         setUsers(users.map(user => user._id === userId ? updatedUser : user));
+//       } else {
+//         alert('Invalid verification code. Please try again.');
+//       }
+//     } catch (error) {
+//       console.error('Error verifying mobile number:', error);
+//       alert('Failed to verify mobile number: ' + error.response?.data?.message || error.message);
+//     }
+//   };
   
 
   if (token) {
@@ -2009,7 +2128,7 @@ const ActiveUsers = () => {
                   <button
                     onClick={async () => {
                       try {
-                        await axios.put(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${selectedUser._id}`, selectedUser);
+                        await axios.put(`http://127.0.0.1:5000/api/users/${selectedUser._id}`, selectedUser);
                         alert('User information updated successfully!');
                       } catch (error) {
                         console.error('Error updating user:', error);

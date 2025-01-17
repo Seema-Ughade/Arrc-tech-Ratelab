@@ -30,6 +30,10 @@ import UserLoginHistory from './Reports/UserLoginHistory';
 import ReportRequest from './ReportRequest';
 import AllCompany from './Companies/AllCompany';
 import Blog from './Blog/Blog';
+import SystemSettings from '../Arrc-Ratelab-Review-UI/SystemSetting/SystemSettings';
+import GeneralSettings from '../Arrc-Ratelab-Review-UI/SystemSetting/GeneralSettings';
+import LogoFaviconSettings from '../Arrc-Ratelab-Review-UI/SystemSetting/LogoFaviconSettings';
+import SEOConfiguration from '../Arrc-Ratelab-Review-UI/SystemSetting/SEOConfiguration';
 // import Advertisement from './Advertisement/Advertisement';
 // import ManageUsers from './ManageUsers/ManageUsers';
 // import SupportTicket from './SupportTicket/SupportTicket';
@@ -105,6 +109,15 @@ export default function AdminLayout() {
             <Route path="/Report/LoginHistory" element={<UserLoginHistory />} />
             <Route path="/Report/NotificationHistory" element={<NotificationHistory />} />
             <Route path="/ReportRequest" element={<ReportRequest />} />
+
+
+
+            <Route path="/SystemSetting" element={<SystemSettings />} />
+            <Route path="/general-settings" element={<GeneralSettings />} />
+            <Route path="/logo-favicon" element={<LogoFaviconSettings />} />
+            <Route path="/seo" element={<SEOConfiguration />} />
+
+            
           </Routes>
         </div>
       </main>
