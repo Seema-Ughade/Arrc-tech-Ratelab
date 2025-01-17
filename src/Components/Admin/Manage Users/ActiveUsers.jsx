@@ -51,7 +51,7 @@ const ActiveUsers = () => {
 
   const verifyEmail = async (token) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:5000/api/users/verify-email/${token}`);
+      const response = await axios.get(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/verify-email/${token}`);
       setVerificationStatus({ success: true, message: response.data.message });
     } catch (error) {
       setVerificationStatus({ success: false, message: error.response?.data?.message || 'Verification failed' });
@@ -74,7 +74,7 @@ const ActiveUsers = () => {
 
   const sendEmailVerification = async (userId) => {
     try {
-      await axios.post(`http://127.0.0.1:5000/api/users/${userId}/send-email-verification`);
+      await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/users/${userId}/send-email-verification`);
       message.success('Verification email sent!');
     } catch (error) {
       console.error('Error sending verification email:', error);
