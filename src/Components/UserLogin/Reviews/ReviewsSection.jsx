@@ -135,7 +135,7 @@ const ReviewsSection = () => {
       try {
         setIsLoading(true);
         const [usersResponse, reviewsResponse] = await Promise.all([
-          axios.get('http://127.0.0.1:5000/api/users'),
+          axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/users'),
           axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews')
         ]);
 

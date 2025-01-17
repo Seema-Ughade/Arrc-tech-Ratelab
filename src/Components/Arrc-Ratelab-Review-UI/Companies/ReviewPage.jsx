@@ -1760,7 +1760,7 @@ const ReviewPage = () => {
   const fetchCompanyAndReviews = async () => {
     try {
       const [companiesResponse, reviewsResponse] = await Promise.all([
-        axios.get('http://127.0.0.1:5000/api/companies'),
+        axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies'),
         axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews')
       ]);
   
@@ -1915,7 +1915,7 @@ const ReviewPage = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-[#FFB23F]"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#4a50ef]"></div>
       </div>
     );
   }

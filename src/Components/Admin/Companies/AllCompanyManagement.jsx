@@ -465,7 +465,7 @@
 // //     const fetchCompanies = async () => {
 // //       try {
 // //         setLoading(true);
-// //         const response = await axios.get('http://127.0.0.1:5000/api/companies');
+// //         const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies');
 // //         setCompanies(response.data);
 // //         setFilteredCompanies(response.data);
 // //       } catch (err) {
@@ -514,7 +514,7 @@
 
 // //   const handleModalSubmit = async (type) => {
 // //     try {
-// //       const response = await axios.post(`http://127.0.0.1:5000/api/companies/${selectedCompany._id}/${type}`, {
+// //       const response = await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${selectedCompany._id}/${type}`, {
 // //         details: modalDetails
 // //       });
       
@@ -913,7 +913,7 @@
 //     const fetchCompanies = async () => {
 //       try {
 //         setLoading(true);
-//         const response = await axios.get('http://127.0.0.1:5000/api/companies');
+//         const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies');
 //         setCompanies(response.data);
 //         setFilteredCompanies(response.data);
 //       } catch (err) {
@@ -963,7 +963,7 @@
 //   const handleApprove = async () => {
 //     if (!approvalDetails.trim()) return
 //     try {
-//       await axios.post(`http://127.0.0.1:5000/api/companies/${selectedCompany._id}/approval`, {
+//       await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${selectedCompany._id}/approval`, {
 //         details: approvalDetails
 //       })
 //       const updatedCompanies = companies.filter(company => company._id !== selectedCompany._id)
@@ -981,7 +981,7 @@
 //   const handleReject = async () => {
 //     if (!rejectionDetails.trim()) return
 //     try {
-//       await axios.post(`http://127.0.0.1:5000/api/companies/${selectedCompany._id}/rejection`, {
+//       await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${selectedCompany._id}/rejection`, {
 //         details: rejectionDetails
 //       })
 //       const updatedCompanies = companies.filter(company => company._id !== selectedCompany._id)
@@ -1000,7 +1000,7 @@
 
 //   const handleModalSubmit = async (type) => {
 //     try {
-//       const response = await axios.post(`http://127.0.0.1:5000/api/companies/${selectedCompany._id}/${type}`, {
+//       const response = await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${selectedCompany._id}/${type}`, {
 //         details: modalDetails
 //       });
       
@@ -1411,7 +1411,7 @@ const AllCompanyManagement = () => {
     const fetchCompanies = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://127.0.0.1:5000/api/companies');
+        const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies');
         setCompanies(response.data);
         setFilteredCompanies(response.data);
       } catch (err) {
@@ -1461,7 +1461,7 @@ const AllCompanyManagement = () => {
   const handleApprovalSubmit = async () => {
     if (!approvalDetails.trim()) return;
     try {
-      await axios.post(`http://127.0.0.1:5000/api/companies/${selectedCompany._id}/approval`, {
+      await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${selectedCompany._id}/approval`, {
         details: approvalDetails
       });
       updateCompanyStatus('Approved');
@@ -1475,7 +1475,7 @@ const AllCompanyManagement = () => {
   const handleRejectionSubmit = async () => {
     if (!rejectionDetails.trim()) return;
     try {
-      await axios.post(`http://127.0.0.1:5000/api/companies/${selectedCompany._id}/rejection`, {
+      await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${selectedCompany._id}/rejection`, {
         details: rejectionDetails
       });
       updateCompanyStatus('Rejected');

@@ -471,7 +471,7 @@ export default function CompanyListing() {
 
   // const fetchCompanies = async () => {
   //   try {
-  //     const response = await axios.get('http://127.0.0.1:5000/api/companies')
+  //     const response = await axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies')
   //     const approvedCompanies = response.data.filter(company => company.status === 'Approved');
   //     setCompanies(Array.isArray(approvedCompanies) ? approvedCompanies : [])
   //   } catch (error) {
@@ -488,7 +488,7 @@ export default function CompanyListing() {
   const fetchCompanies = async () => {
     try {
       const [companiesResponse, reviewsResponse] = await Promise.all([
-        axios.get('http://127.0.0.1:5000/api/companies'),
+        axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/companies'),
         axios.get('https://arrc-tech-ratelab-backend-project.onrender.com/api/reviews')
       ]);
   

@@ -348,7 +348,7 @@ const PendingCompanies = () => {
   const handleApprove = async () => {
     if (!approvalDetails.trim()) return
     try {
-      await axios.post(`http://127.0.0.1:5000/api/companies/${selectedCompany._id}/approval`, {
+      await axios.post(`https://arrc-tech-ratelab-backend-project.onrender.com/api/companies/${selectedCompany._id}/approval`, {
         details: approvalDetails
       })
       const updatedCompanies = companies.filter(company => company._id !== selectedCompany._id)

@@ -125,6 +125,8 @@ const BlogCard = ({ post }) => {
 
 const BlogSection = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -132,9 +134,13 @@ const BlogSection = () => {
         const response = await axios.get("https://arrc-tech-ratelab-backend-project.onrender.com/api/posts");
         if (response.data) {
           setPosts(response.data);
+          setLoading(false);
+
         }
       } catch (error) {
-        console.error("Error fetching blog posts:", error);
+        setError("Error fetching blog posts:", error);
+        setLoading(false);
+
       }
     };
 
@@ -142,9 +148,21 @@ const BlogSection = () => {
   }, []);
 
   if (posts.length === 0) {
-    return <div>Loading...</div>;
+    return       <div className="flex justify-center items-center h-screen">
+    <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-opacity-75"></div>
+  </div>
+;
   }
 
+  
+
+  if (error) {
+    return (
+      <div className="text-center text-red-500 text-xl mt-10 bg-red-100 p-4 rounded-md max-w-lg mx-auto shadow-md">
+        {error}
+      </div>
+    );
+  }
   return (
     <section className="py-16 px-4 mt-16 bg-gray-50">
       <div className="max-w-7xl mx-auto">
